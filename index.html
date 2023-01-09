@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
   <link rel="stylesheet" href="./theme.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
 </head>
@@ -17,7 +18,9 @@
     window.$docsify = {
       search: 'auto',
       loadSidebar: true,
-      homepage: 'README.md',
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md'
+      }, homepage: 'README.md',
       subMaxLevel: 2,
       name: 'Polylib Components',
       logo: '/images/logo.svg',
@@ -36,7 +39,7 @@
 </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
-  
+
   <script src="https://unpkg.com/polylib" type="module"></script>
   <script src="https://unpkg.com/@plcmp/pl-button" type="module"></script>
   <script src="https://unpkg.com/@plcmp/pl-flex-layout" type="module"></script>
