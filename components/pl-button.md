@@ -3,12 +3,21 @@
 Buttons represent actions that are available to the user.
 
 <pl-flex-layout>
-    <pl-button variant="primary" label="Button"></pl-button>
+    <pl-button variant="primary">Button</pl-button>
 </pl-flex-layout>
 
 ```html
 <pl-button variant="primary" label="Button"></pl-button>
+
+or
+
+<pl-button variant="primary">Button</pl-button>
+
 ```
+
+## Label
+
+Label property is used for buttons text. You can also write text inside the component like in the example above. 
 
 ## Variants
 
@@ -45,6 +54,8 @@ Use the `negative` attribute to set the button's negative variant.
 ```
 
 ## Slots
+
+Default slot is used for text label.
 
 Use the `prefix` and `suffix` slots to add icons.
 
