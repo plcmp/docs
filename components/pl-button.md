@@ -60,8 +60,8 @@ Use the `prefix` and `suffix` slots to add icons.
         <pl-icon slot="suffix" variant="primary" iconset="pl-default" size="16" icon="print"></pl-icon>
     </pl-button>
     <pl-button variant="ghost" label="Download">
-    <pl-icon slot="suffix" variant="primary" iconset="pl-default" size="16" icon="download"></pl-icon>
-    <pl-icon slot="prefix" variant="primary" iconset="pl-default" size="16" icon="report"></pl-icon>
+        <pl-icon slot="suffix" variant="primary" iconset="pl-default" size="16" icon="download"></pl-icon>
+        <pl-icon slot="prefix" variant="primary" iconset="pl-default" size="16" icon="report"></pl-icon>
     </pl-button>
     <pl-button variant="link" label="Send">
         <pl-icon slot="suffix" variant="primary" iconset="pl-default" size="16" icon="send"></pl-icon>
@@ -76,8 +76,8 @@ Use the `prefix` and `suffix` slots to add icons.
     <pl-icon slot="suffix" variant="primary" iconset="pl-default" size="16" icon="print"></pl-icon>
 </pl-button>
 <pl-button variant="ghost" label="Download">
-<pl-icon slot="suffix" variant="primary" iconset="pl-default" size="16" icon="download"></pl-icon>
-<pl-icon slot="prefix" variant="primary" iconset="pl-default" size="16" icon="report"></pl-icon>
+    <pl-icon slot="suffix" variant="primary" iconset="pl-default" size="16" icon="download"></pl-icon>
+    <pl-icon slot="prefix" variant="primary" iconset="pl-default" size="16" icon="report"></pl-icon>
 </pl-button>
 <pl-button variant="link" label="Send">
     <pl-icon slot="suffix" variant="primary" iconset="pl-default" size="16" icon="send"></pl-icon>
