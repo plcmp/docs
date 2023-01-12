@@ -1,10 +1,7 @@
-# Pl-Button
-
+# Pl-Button 
 Buttons represent actions that are available to the user.
 
-<pl-flex-layout>
-    <pl-button variant="primary">Button</pl-button>
-</pl-flex-layout>
+<pl-button variant="primary">Button</pl-button>
 
 ```html
 <pl-button variant="primary" label="Button"></pl-button>
@@ -15,11 +12,9 @@ or
 
 ```
 
-## Label
+## Examples
 
-Label property is used for buttons text. You can also write text inside the component like in the example above. 
-
-## Variants
+### Variants
 
 Use the `variant` attribute to set the button's variant.
 
@@ -53,9 +48,7 @@ Use the `negative` attribute to set the button's negative variant.
 <pl-button negative variant="link" label="Link"></pl-button>
 ```
 
-## Slots
-
-Default slot is used for text label.
+### Prefix and suffix slots
 
 Use the `prefix` and `suffix` slots to add icons.
 
@@ -91,7 +84,7 @@ Use the `prefix` and `suffix` slots to add icons.
 </pl-button>
 ```
 
-## Loading
+### Loading
 
 Use the `loading` attribute to make a button busy. Clicks will be suppressed until the loading state is removed.
 
@@ -109,7 +102,7 @@ Use the `loading` attribute to make a button busy. Clicks will be suppressed unt
     <pl-button loading variant="link" label="Loading..."></pl-button>
 </pl-flex-layout>
 
-## Disabled
+### Disabled
 
 Use the `disabled` attribute to disable a button. Clicks will be suppressed until the disabled state is removed.
 
@@ -127,10 +120,30 @@ Use the `disabled` attribute to disable a button. Clicks will be suppressed unti
 <pl-button disabled variant="link" label="link" ></pl-button>
 ```
 
+## Properties
+
+| Name  | Description  | ReflectsToAttribute | Type | Default
+|---|---|:----:|---|---|
+| `label` | The button's label  | - | string |  (empty) 
+| `variant` | The button's variant | + | `primary \| secondary \| ghost \| link` | `secondary`
+| `disabled` | Disabled state  |  + | `boolean` | `false`
+| `hidden` | Hidden state  |  + | `boolean` | `false`
+| `negative` | Button's negative version  |  + | `boolean` | `false`
+| `loading` | Button's loading state  |  + | `boolean` | `false`
+
+
+## Slots
+
+| Name  | Description  
+|---|---
+| (default) | The button's label 
+| `prefix` | The button's prefix slot, icons placed before label
+| `suffix` | The button's suffix slot, icons placed after label
+
 ## CSS Variables
 
-| variable  | description  |   
+| Name  | Description  |   
 |---|---|
-|  --pl-button-background | background color of button  |   
-|  --pl-button-color | text color of button  |   
-|  --pl-button-border | border of button  |   
+|  `--pl-button-background` | background color of button  |   
+|  `--pl-button-color` | text color of button  |   
+|  `--pl-button-border` | border of button  |   
