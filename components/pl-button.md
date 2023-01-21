@@ -126,10 +126,10 @@ Use the `disabled` attribute to disable a button. Clicks will be suppressed unti
 |---|---|:----:|---|---|
 | `label` | The button's label  | - | string |  (empty) 
 | `variant` | The button's variant | + | `primary \| secondary \| ghost \| link` | `secondary`
-| `disabled` | Disabled state  |  + | `boolean` | `false`
-| `hidden` | Hidden state  |  + | `boolean` | `false`
-| `negative` | Button's negative version  |  + | `boolean` | `false`
-| `loading` | Button's loading state  |  + | `boolean` | `false`
+| `disabled` | The button's disabled state  |  + | `boolean` | `false`
+| `hidden` | The button's hidden state  |  + | `boolean` | `false`
+| `negative` | The button's negative state  |  + | `boolean` | `false`
+| `loading` | The button's loading state  |  + | `boolean` | `false`
 
 
 ## Slots
