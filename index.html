@@ -15,6 +15,7 @@
 
 <body>
   <div id="app"></div>
+
   <script>
     window.$docsify = {
       search: 'auto',
@@ -34,15 +35,18 @@
     };
 
   </script>
+  <script async src="https://ga.jspm.io/npm:es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+
   <script type="importmap">
     {
         "imports": {
-            "polylib": "https://unpkg.com/polylib@1.1.9/index.js",
+            "polylib": "https://unpkg.com/polylib",
             "@plcmp/pl-iconset": "https://unpkg.com/@plcmp/pl-iconset",
             "@plcmp/pl-icon": "https://unpkg.com/@plcmp/pl-icon"
         }
     }
-</script>
+  </script>
+
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
   <script src="https://unpkg.com/docsify-plugin-toc@1.3.1/dist/docsify-plugin-toc.min.js"></script>
