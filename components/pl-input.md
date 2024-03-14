@@ -126,7 +126,7 @@
     <pl-input>
 </details>
 
-### Min max step
+### Min, max, step
 Для поля с `type = number` используйте `min` для установки минимального допустимого значения, `max` для установки макисмального допустимого значения, `step` для шага изменения значения.
 
 <pl-input label="Числа от 100" type="number" label-width="100" min="100" orientation="horizontal"></pl-input>
@@ -148,70 +148,60 @@
 ### Readonly
 Используйте `readonly` для запрета ввода значений
 
-<pl-input label="Заблокированное поле" value="Тест" readonly="true" label-width="140" orientation="horizontal"></pl-input>
+<pl-input label="Заблокированное поле" value="Тест" readonly label-width="140" orientation="horizontal"></pl-input>
 
 <details>
     <summary>html</summary>
 
-    <pl-input label="Заблокированное поле" value="Тест" readonly="true" label-width="140" orientation="horizontal"></pl-input>
+    <pl-input label="Заблокированное поле" value="Тест" readonly label-width="140" orientation="horizontal"></pl-input>
 </details>
 
 
 ### Required
 Используйте `required` если поле обязатльно для заполнения
 
-<pl-input label="Не заполненное поле" required="true" label-width="140" orientation="horizontal"></pl-input>
+<pl-input label="Не заполненное поле" required label-width="140" orientation="horizontal"></pl-input>
 <br>
-<pl-input label="Заполненное поле" required="true" value="Тест" readonly="true" label-width="140" orientation="horizontal"></pl-input>
+<pl-input label="Заполненное поле" required value="Тест" readonly label-width="140" orientation="horizontal"></pl-input>
 
 <details>
     <summary>html</summary>
 
-    <pl-input label="Не заполненное поле" required="true" label-width="140" orientation="horizontal"></pl-input>
+    <pl-input label="Не заполненное поле" required label-width="140" orientation="horizontal"></pl-input>
 
-    <pl-input label="Заполненное поле" required="true" value="Тест" readonly="true" label-width="140" orientation="horizontal"></pl-input>
+    <pl-input label="Заполненное поле" required value="Тест" readonly label-width="140" orientation="horizontal"></pl-input>
 </details>
 
 
-### Invalid (под вопросом)
-Используйте `invalid` что бы пометь поле как не корректно заполненное
-
-<pl-input label="Не валдное поле" invalid="false" label-width="140" orientation="horizontal"></pl-input>
-
-<details>
-    <summary>html</summary>
-
-    <pl-input label="Не заполненное поле" required="true" label-width="140" orientation="horizontal"></pl-input>
-
-    <pl-input label="Заполненное поле" required="true" value="Тест" readonly="true" label-width="140" orientation="horizontal"></pl-input>
-</details>
+### Invalid
+`invalid` определяет является ли введеное значение в поле валидным, вычисляется автоматический.
 
 ### Disabled
 Используйте `disabled` что бы сделать поле не активным
 <pl-input label="Активное поле" disabled="false" label-width="140" orientation="horizontal"></pl-input>
 <br>
-<pl-input label="Не активное поле" disabled="true" label-width="140" orientation="horizontal"></pl-input>
+<pl-input label="Не активное поле" disabled label-width="140" orientation="horizontal"></pl-input>
 
 <details>
     <summary>html</summary>
 
     <pl-input label="Активное поле" disabled="false" label-width="140" orientation="horizontal"></pl-input>
 
-    <pl-input label="Не активное поле" disabled="true" label-width="140" orientation="horizontal"></pl-input>
+    <pl-input label="Не активное поле" disabled label-width="140" orientation="horizontal"></pl-input>
 </details>
 
 ### Stretch
 Используйте `stretch` что бы растянуть компонент по ширине внешнего контейнера
 <pl-input label="Не растянуто" stretch="false" label-width="140" orientation="horizontal"></pl-input>
 <br>
-<pl-input label="Растянуто" stretch="true" label-width="140" orientation="horizontal"></pl-input>
+<pl-input label="Растянуто" stretch label-width="140" orientation="horizontal"></pl-input>
 
 <details>
     <summary>html</summary>
 
     <pl-input label="Не растянуто" stretch="false" label-width="140" orientation="horizontal"></pl-input>
 
-    <pl-input label="Растянуто" stretch="true" label-width="140" orientation="horizontal"></pl-input>
+    <pl-input label="Растянуто" stretch label-width="140" orientation="horizontal"></pl-input>
 </details>
 
 ### Slots
@@ -279,7 +269,7 @@
 | `step` | Максимальное число которое можно ввести в поле<br> *Только для `type = number`* | - | `boolean` | (empty)
 | `readonly` | Значение доступно только для чтения  | - | `boolean` | `false`
 | `required` | Значение обязательно для заполнения  | - | `boolean` | `false`
-| `invalid` | Значение не прошло валидацию  | - | `boolean` | `false`
+| `invalid` | Значение не прошло валидацию<br> *Вычисляется автоматический*  | - | `boolean` | `false`
 | `disabled` | Отвечает за отключение этой компоненты | + | `boolean` | `false`
 | `stretch` | Растянуть этот компонент  | + | `boolean` | `false`
 | `hidden` | Отвечает за отображение этой компоненты  | + | `boolean` | `false`
