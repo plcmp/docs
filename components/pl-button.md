@@ -5,9 +5,7 @@ Buttons represent actions that are available to the user.
 
 ```html
 <pl-button variant="primary" label="Button"></pl-button>
-
 or
-
 <pl-button variant="primary">Button</pl-button>
 
 ```
@@ -16,7 +14,7 @@ or
 
 ### Variants
 
-Use the `variant` attribute to set the button's variant.
+Use the `variant` property to set the button's variant.
 
 <pl-flex-layout>
     <pl-button variant="primary" label="Primary"></pl-button>
@@ -139,11 +137,3 @@ Use the `disabled` attribute to disable a button. Clicks will be suppressed unti
 | (default) | The button's label 
 | `prefix` | The button's prefix slot, icons placed before label
 | `suffix` | The button's suffix slot, icons placed after label
-
-## CSS Variables
-
-| Name  | Description  |   
-|---|---|
-|  `--pl-button-background` | background color of button  |   
-|  `--pl-button-color` | text color of button  |   
-|  `--pl-button-border` | border of button  |   

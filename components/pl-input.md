@@ -1,13 +1,12 @@
 # Pl-Input
 Текстовое поле предоставляет пользователю возможность ввода значений в форму.
 
-<pl-input label="Подпись"></pl-input>
+<pl-input label="Label"></pl-input>
 
-<details>
-    <summary>html</summary>
+```html
+<pl-input label="Label"></pl-input>
 
-    <pl-input label="Текст"></pl-input>
-</details>
+```
 
 
 ## Examples
@@ -15,17 +14,17 @@
 ### Orientation
 Используйте `orientation` для изменения расположения текста
 
-<pl-input label="horizontal orientation" label-width="130" orientation="horizontal"></pl-input>
-<br>
-<pl-input label="vertical orientation" orientation="vertical"></pl-input>
+<pl-input label="Horizontal label" orientation="horizontal"></pl-input>
 
-<details>
-    <summary>html</summary>
+```html
+<pl-input label="Horizontal label" orientation="horizontal"></pl-input>
+```
 
-    <pl-input label="horizontal orientation" label-width="130" orientation="horizontal"></pl-input>
+<pl-input label="Vertical label" orientation="vertical"></pl-input>
 
-    <pl-input label="vertical orientation" orientation="vertical"></pl-input>
-</details>
+```html
+<pl-input label="Vertical label" orientation="vertical"></pl-input>
+```
 
 
 ### Type
