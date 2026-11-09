@@ -1,0 +1,26 @@
+{
+  "name": "nfjs-guide",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "modules/*"
+  ],
+  "scripts": {
+    "start": "node index.js",
+    "migrate": "node index.js --domigrate=true",
+    "fill": "node scripts/fill-employees.mjs"
+  },
+  "dependencies": {
+    "@nfjs/core": "*",
+    "@nfjs/back": "*",
+    "@nfjs/auth": "*",
+    "@nfjs/db-postgres": "*",
+    "@nfjs/back-dbfw": "*",
+    "@nfjs/front-server": "*",
+    "@nfjs/front-pl": "*",
+    "@nfjs/back-dbfw-ui-pl": "*",
+    "@nfjs/db-editor": "*",
+    "@nfjs/dev": "*",
+    "@nfjs/migrate": "*"
+  }
+}

@@ -2,9 +2,6 @@ function redirectDocsRoutes() {
   // Старые ссылки открывают тот же материал по новому адресу, включая якорь заголовка.
   let target = window.location.hash.replace(/^#\/integration(?=\/|\?|$)/, '#/nfjs');
   const path = target.slice(1).split('?')[0];
-  if (/^\/nfjs\/?$/.test(path)) {
-    target = target.replace(/^#\/nfjs\/?(?=\?|$)/, '#/nfjs/forms');
-  }
   if (/^\/components(?:\/(?:README(?:\.md)?)?)?\/?$/i.test(path)) {
     target = '#/components/pl-button';
   }
@@ -58,6 +55,14 @@ window.$docsify = {
       '/guide/reactivity', '/guide/bindings', '/guide/object-bindings',
       '/guide/templates', '/guide/events', '/guide/lifecycle', '/guide/edge-cases',
       '/guide/styles', '/guide/style-guide',
+      '/nfjs/', '/nfjs/guide/', '/nfjs/guide/setup',
+      '/nfjs/guide/model', '/nfjs/guide/list', '/nfjs/guide/card',
+      '/nfjs/guide/relations', '/nfjs/guide/generation', '/nfjs/backend/broker',
+      '/nfjs/backend/configuration', '/nfjs/backend/context', '/nfjs/backend/database-style',
+      '/nfjs/backend/database', '/nfjs/backend/dbsrc', '/nfjs/backend/errors',
+      '/nfjs/backend/http', '/nfjs/backend/module-structure', '/nfjs/backend/modules',
+      '/nfjs/backend/query-control', '/nfjs/backend/transactions', '/nfjs/tools/db-editor',
+      '/nfjs/tools/generators', '/nfjs/tools/templates',
       '/nfjs/forms', '/nfjs/subforms', '/nfjs/access',
       '/nfjs/validation', '/nfjs/data', '/nfjs/rest',
       '/nfjs/server-endpoints', '/nfjs/actions', '/nfjs/datasets',
@@ -109,7 +114,7 @@ window.$docsify = {
     ],
     depth: 3,
     maxAge: 86400000,
-    namespace: `polylib-docs-${window.location.pathname}-fc8cbf22ab`,
+    namespace: `polylib-docs-${window.location.pathname}-nfjs-guide-20261109`,
     insertAfter: '.app-name',
     placeholder: 'Поиск по документации',
     noData: 'Ничего не найдено',

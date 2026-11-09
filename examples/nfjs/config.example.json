@@ -1,0 +1,64 @@
+{
+  "http_port": 4185,
+  "theme": "default",
+  "debug": {
+    "need": true,
+    "includeToResponse": false
+  },
+  "@nfjs/core": {
+    "modules": {
+      "only": [
+        "@nfjs/core",
+        "@nfjs/back",
+        "@nfjs/auth",
+        "@nfjs/db-postgres",
+        "@nfjs/back-dbfw",
+        "@nfjs/front-server",
+        "@nfjs/front-pl",
+        "@nfjs/back-dbfw-ui-pl",
+        "@nfjs/db-editor",
+        "@nfjs/dev",
+        "@nfjs/migrate",
+        "demo-company-guide"
+      ]
+    }
+  },
+  "data_providers": {
+    "default": {
+      "type": "db-postgres",
+      "connectType": "pool",
+      "credentialsSource": "config",
+      "name": "default",
+      "connectConfig": {
+        "host": "127.0.0.1",
+        "port": 54329,
+        "database": "nfjs_guide",
+        "user": "postgres",
+        "password": "{{DB_PASSWORD}}"
+      }
+    }
+  },
+  "@nfjs/migrate": {
+    "doMigrate": false,
+    "doSilent": true,
+    "checkType": "simple",
+    "defaultRunType": "r",
+    "defaultDoUnsafeDrop": false,
+    "data_providers": {
+      "default": {
+        "checkUserName": "postgres",
+        "checkUserPassword": "{{DB_PASSWORD}}",
+        "adminUserName": "postgres",
+        "adminUserPassword": "{{DB_PASSWORD}}",
+        "superUserName": "postgres",
+        "superUserPassword": "{{DB_PASSWORD}}"
+      }
+    },
+    "defaultDoInit": {
+      "need": true,
+      "appAdminName": "guide",
+      "appAdminPassword": "{{GUIDE_PASSWORD}}",
+      "appAdminRole": "guide-admin"
+    }
+  }
+}

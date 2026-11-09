@@ -1,0 +1,10 @@
+services:
+  postgres:
+    image: postgres:18
+    ports:
+      - "127.0.0.1:54329:5432"
+    environment:
+      POSTGRES_DB: nfjs_guide
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./postgres-init.sql:/docker-entrypoint-initdb.d/001-roles.sql:ro

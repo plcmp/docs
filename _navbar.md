@@ -1,3 +1,3 @@
 * [Polylib](/guide/)
-* [NFJS](/nfjs/forms)
+* [NFJS](/nfjs/)
 * [PLCMP](/components/pl-button)

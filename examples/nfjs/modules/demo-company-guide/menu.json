@@ -1,0 +1,22 @@
+[
+  {
+    "caption": "Demo-company",
+    "path": "",
+    "order": 1,
+    "icon": "person-group"
+  },
+  {
+    "caption": "Сотрудники · REST",
+    "path": "Demo-company",
+    "form": "guide.rest.list",
+    "guid": "0dfecf11-9fd9-4690-af69-78d5d583ca31",
+    "order": 1
+  },
+  {
+    "caption": "Сотрудники · serverEndpoints",
+    "path": "Demo-company",
+    "form": "guide.endpoints.list",
+    "guid": "1dfecf11-9fd9-4690-af69-78d5d583ca31",
+    "order": 2
+  }
+]
