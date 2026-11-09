@@ -1,5 +1,11 @@
 {
   "name": "demo-company-guide",
   "private": true,
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@nfjs/core": "*",
+    "@nfjs/back": "*",
+    "@nfjs/front-pl": "*",
+    "@plcmp/pl-table": "*"
+  }
 }

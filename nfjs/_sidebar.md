@@ -21,7 +21,7 @@
   * [Фильтры, сортировка и диапазон](/nfjs/backend/query-control)
   * [Разделы, операции и права](/nfjs/backend/broker)
   * [Соединения и транзакции](/nfjs/backend/transactions)
-  * [Ошибки и сообщения](/nfjs/backend/errors)
+  * [Ошибки и msgs.json](/nfjs/backend/errors)
   * [Соглашения по базе данных](/nfjs/backend/database-style)
   * [Исходники БД и миграции](/nfjs/backend/dbsrc)
 

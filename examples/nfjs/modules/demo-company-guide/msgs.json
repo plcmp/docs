@@ -1,10 +1,14 @@
 {
-    "dbWarn": {
-        "company.employee_card.uk4employee_card8actual_postion" : "У сотрудника должна быть активной только одна должность.",
-        "company.employee_card_inoperability.ex4employee_card_inoperability8dates" : "Периоды временной нетрудоспособности сотрудника на одной должности не должны пересекаться."
-    },
-    "companyDataWarn": {
-        "company.employee_card.ch4employee_card8begin_not_before_birth" : "Дата начала действия личного дела [{0}] не должна быть ранее даты рождения сотрудника.",
-        "company.employee_card_inoperability.ch4employee_card_inoperability8employee_card_period_coverage": "Период действия временной нетрудоспособности [{0} ~ {1}] должен полностью входить в период действия личного дела [{2} ~ {3}]"
-    }
+  "dbWarn": {
+    "company.employee_card.uk4employee_card8actual_postion": "У сотрудника должна быть активной только одна должность.",
+    "company.employee_card_inoperability.ex4employee_card_inoperability8dates": "Периоды временной нетрудоспособности сотрудника на одной должности не должны пересекаться.",
+    "company.employee_contact.contact#notnull": "Укажи значение контакта."
+  },
+  "companyDataWarn": {
+    "company.employee_card.ch4employee_card8begin_not_before_birth": "Дата начала действия личного дела [{0}] не должна быть ранее даты рождения сотрудника.",
+    "company.employee_card_inoperability.ch4employee_card_inoperability8employee_card_period_coverage": "Период действия временной нетрудоспособности [{0} ~ {1}] должен полностью входить в период действия личного дела [{2} ~ {3}]"
+  },
+  "companyInfo": {
+    "employee_saved": "Сотрудник «{0}» сохранён."
+  }
 }

@@ -5,8 +5,8 @@ import { list, get, getGenerated, create, update, remove, save, contactsList } f
 
 const meta = {
   require: {
-    after: ['@nfjs/front-pl'],
-    before: ['@nfjs/back-dbfw']
+    after: '@nfjs/front-pl',
+    before: '@nfjs/back-dbfw'
   }
 };
 const menu = await api.loadJSON(fileURLToPath(new URL('./menu.json', import.meta.url)));

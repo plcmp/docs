@@ -18,8 +18,12 @@ export async function get(context) {
 }
 
 export async function create(context) {
-  const result = await dbapi.broker('company.employee.add', context.body.args, { context });
-  context.send({ data: result.data });
+  try {
+    const result = await dbapi.broker('company.employee.add', context.body.args, { context });
+    context.send({ data: result.data });
+  } catch (error) {
+    context.send(api.nfError(error).json());
+  }
 }
 
 export async function getGenerated(context) {
@@ -31,8 +35,12 @@ export async function getGenerated(context) {
 }
 
 export async function update(context) {
-  const result = await dbapi.broker('company.employee.upd', context.body.args, { context });
-  context.send({ data: result.data });
+  try {
+    const result = await dbapi.broker('company.employee.upd', context.body.args, { context });
+    context.send({ data: result.data });
+  } catch (error) {
+    context.send(api.nfError(error).json());
+  }
 }
 
 export async function remove(context) {
@@ -72,6 +80,6 @@ export async function save(context) {
     await connect.rollback();
     context.send(api.nfError(error).json());
   } finally {
-    connect.release();
+    await connect.release();
   }
 }

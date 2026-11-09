@@ -4,12 +4,15 @@
 
 ## 1. Установи зависимости
 
-Распакуй [учебное приложение](../../examples/nfjs-guide.zip ':ignore') и перейди в его каталог:
+Исходная модель находится в [Demo-company на GitHub](https://github.com/nf-framework/demo/tree/master/modules/demo-company). Конфигурация и формы шагов руководства — в каталоге `examples/nfjs` [репозитория документации](https://github.com/plcmp/docs). Перейди в этот каталог:
 
 ```bash
+cd examples/nfjs
 npm install
 cp config.example.json config.json
 ```
+
+`@nfjs/dev` устанавливается из [репозитория GitHub](https://github.com/nf-framework/nf-dev): пакет инструментов указан в зависимостях Git-адресом. Для установки также нужен Git.
 
 `modules/demo-company-guide` подключён через npm workspaces. После установки он доступен загрузчику NFJS как пакет `demo-company-guide` в `node_modules`.
 

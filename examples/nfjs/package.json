@@ -20,7 +20,7 @@
     "@nfjs/front-pl": "*",
     "@nfjs/back-dbfw-ui-pl": "*",
     "@nfjs/db-editor": "*",
-    "@nfjs/dev": "*",
+    "@nfjs/dev": "git+https://github.com/nf-framework/nf-dev.git",
     "@nfjs/migrate": "*"
   }
 }

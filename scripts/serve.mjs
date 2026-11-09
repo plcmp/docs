@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const port = Number(process.argv[2] || 4173);
-const types = { '.html': 'text/html', '.md': 'text/markdown', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/x-icon', '.json': 'application/json', '.sql': 'text/plain', '.tmplt': 'text/plain', '.yaml': 'text/plain', '.zip': 'application/zip' };
+const types = { '.html': 'text/html', '.md': 'text/markdown', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/x-icon', '.json': 'application/json', '.sql': 'text/plain', '.tmplt': 'text/plain', '.yaml': 'text/plain' };
 
 // Раздаём только файлы документации; скрытые каталоги, включая .git, недоступны.
 createServer(async (request, response) => {
@@ -17,7 +17,7 @@ createServer(async (request, response) => {
       return;
     }
     const data = await readFile(path);
-    const contentType = types[extname(path)] + (['.zip', '.png', '.ico'].includes(extname(path)) ? '' : '; charset=utf-8');
+    const contentType = types[extname(path)] + (['.png', '.ico'].includes(extname(path)) ? '' : '; charset=utf-8');
     response.writeHead(200, { 'Content-Type': contentType, 'Cache-Control': 'no-cache' });
     response.end(data);
   } catch {

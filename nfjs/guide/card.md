@@ -69,6 +69,127 @@ this.employeeId = result.id;
 await this.reload();
 ```
 
+#### Маршрут и аргументы
+
+`aSave` обращается к `/guide/employee/save`. Маршрут регистрируется в `nf-module.js` и передаёт запрос функции из `lib/employees.js`:
+
+```js
+import { web } from '@nfjs/back';
+import { save } from './lib/employees.js';
+
+async function init() {
+  web.on('POST', '/guide/employee/save',
+    { middleware: ['session', 'auth', 'json'] }, save);
+}
+```
+
+`session` подготавливает сессию, `auth` проверяет вход, `json` разбирает тело. В обработчике аргументы находятся в `context.body.args`: `pl-action` добавляет оболочку `args` самостоятельно.
+
+```json
+{
+  "args": {
+    "employee": { "id": 1, "lastname": "Смирнова", "firstname": "Анна" },
+    "contacts": {
+      "add": [{ "contact_type": 2, "contact": "anna@example.test" }],
+      "upd": [],
+      "del": [],
+      "touch": []
+    }
+  }
+}
+```
+
+Здесь поля сотрудника сокращены для чтения. При создании форма также отправляет обязательные `gender` и `birthdate`. При обновлении `id` определяет существующую запись. Контакты передаются журналом: неизменённые строки в него не входят.
+
+#### Одна запись: отдельные create и update
+
+Для карточки без связанных изменений достаточно одного `dbapi.broker`. Такой подход использует [карточка из генератора](/nfjs/guide/generation): frontend выбирает маршрут создания или изменения по наличию `employee.id`.
+
+| Маршрут | Аргументы | Операция |
+| --- | --- | --- |
+| `/guide/employee/create` | Поля сотрудника без `id` | `company.employee.add` |
+| `/guide/employee/update` | `id` и изменяемые поля | `company.employee.upd` |
+
+```js
+import { dbapi } from '@nfjs/back';
+import { api } from '@nfjs/core';
+
+export async function create(context) {
+  try {
+    const result = await dbapi.broker(
+      'company.employee.add', context.body.args, { context }
+    );
+    context.send({ data: result.data });
+  } catch (error) {
+    context.send(api.nfError(error).json());
+  }
+}
+```
+
+В `update` вызывается `company.employee.upd` с тем же форматом аргументов; для него нужен ключ `id`. `dbapi.broker` сам получает соединение, начинает транзакцию, выполняет операцию, делает commit или rollback и освобождает соединение. Дополнительный `getConnect()` вокруг одиночного вызова не требуется.
+
+После создания ответ имеет вид `{ data: { id: 7 } }`. `execute()` возвращает `{ id: 7 }`, поэтому форма сохраняет ключ и при следующем сохранении вызывает обновление.
+
+#### Сотрудник и контакты: одно соединение
+
+У основной карточки `/guide/employee/save` — составная операция: сотрудник и все изменения контактов сохраняются вместе. Здесь соединением и транзакцией управляет обработчик.
+
+<details class="docs-code">
+<summary>Полный REST-обработчик сохранения</summary>
+
+```js
+import { dbapi } from '@nfjs/back';
+import { api } from '@nfjs/core';
+
+export async function save(context) {
+  const { employee, contacts = {} } = context.body.args;
+  const connect = await dbapi.getConnect(context);
+  try {
+    await connect.begin();
+    const result = await connect.broker(
+      employee.id ? 'company.employee.upd' : 'company.employee.add', employee
+    );
+    const id = employee.id ?? result.data.id;
+
+    for (const row of contacts.del ?? []) {
+      await connect.broker('company.employee_contact.del', { id: row.id });
+    }
+    for (const row of contacts.upd ?? []) {
+      await connect.broker('company.employee_contact.upd', row);
+    }
+    for (const row of contacts.add ?? []) {
+      await connect.broker('company.employee_contact.add', { ...row, employee_id: id });
+    }
+
+    await connect.commit();
+    context.send({ data: { id } });
+  } catch (error) {
+    await connect.rollback();
+    context.send(api.nfError(error).json());
+  } finally {
+    await connect.release();
+  }
+}
+```
+
+</details>
+
+**Сначала сохраняется сотрудник.** Для новой записи broker возвращает ключ, существующая использует переданный `employee.id`. На этом этапе commit ещё не выполнен: изменение сотрудника можно откатить вместе с последующей ошибкой контакта.
+
+**Затем обрабатывается журнал контактов.** Удалению передаётся только `id`; обновлению — строка с ключом и полями. Для добавления сервер назначает `employee_id` после копирования полей строки, поэтому ключ родителя берётся из сохранённого сотрудника. В примере удаления выполняются перед добавлениями — это позволяет заменить запись, на которую распространяется уникальное ограничение.
+
+**Все вызовы идут через один `connect`.** Если внутри этой последовательности вызвать `dbapi.broker`, он откроет отдельное соединение и не будет частью общей транзакции. Повторно передавать `{ context }` в `connect.broker` не нужно: сессия уже связана с соединением.
+
+**Commit выполняется после всех дочерних записей.** Только затем отправляется успешный ответ с `id`. При ошибке любого вызова rollback отменяет и сотрудника, и уже обработанные контакты. `finally` освобождает соединение при обоих исходах.
+
+В этом контракте сотрудник сохраняется при каждом нажатии, а контакты — только по журналу. Если нужно сохранять одну область независимо, выдели для неё отдельную операцию и принимай снимок только этой области; см. [сохранение части формы](/nfjs/partial-save). Вложенные коллекции контактов потребовали бы отдельного обхода их журналов — одного `contacts.upd` для них недостаточно.
+
+#### Ошибка и состояние формы
+
+Права записи, обязательность полей и ограничения проверяются внутри broker и базы. HTTP-обработчик передаёт ошибку через `api.nfError(error).json()`. Пользовательский текст ограничения можно задать в [`msgs.json`](/nfjs/backend/errors).
+
+`pl-action` показывает сообщение и отклоняет Promise. Поэтому код после `await this.$.aSave.execute(...)` не выполняется: карточка не вызывает `reload()` и не принимает новый снимок. Введённые значения остаются доступными для исправления. После успешного ответа карточка перечитывает сотрудника и контакты, получает серверные ключи и принимает снимки уже сохранённого состояния.
+
 ### serverEndpoints
 
 ```html
