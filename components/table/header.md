@@ -8,7 +8,12 @@
 
 <div class="demo"><pl-doc-table-header></pl-doc-table-header></div>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../../demos/table/header.js ':include :type=code javascript')
+
+</details>
 
 Все строки данных остаются обычными: группировка меняет только расположение заголовков. Подсказки и сортировка настраиваются отдельно. Для внешнего содержимого над таблицей см. [слоты](/components/table/slots).
 

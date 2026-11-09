@@ -17,6 +17,7 @@ import './table/column-visibility.js';
 import './table/loading.js';
 import './table/variable-height.js';
 import './table/custom-row.js';
+import './table/grouped-custom-row.js';
 import './table/header.js';
 import './table/alignment.js';
 import './table/footer.js';

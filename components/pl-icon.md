@@ -33,7 +33,12 @@ import '@plcmp/pl-iconset-default';
 <div class="demo"><pl-doc-iconset-demo></pl-doc-iconset-demo></div>
 <p class="demo-status" role="status">Загружаем примеры…</p>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../demos/icons.js ':include :type=code javascript')
+
+</details>
 
 ## Свойства
 

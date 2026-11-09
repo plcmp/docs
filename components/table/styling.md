@@ -96,7 +96,12 @@ pl-table::part(salary-cell) {
 
 <div class="demo"><pl-doc-table-styling></pl-doc-table-styling></div>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../../demos/table/styling.js ':include :type=code javascript')
+
+</details>
 
 В этом примере классы имени и отдела оформлены внутри `extra styles`, а фон оклада — снаружи через `::part(salary-cell)`.
 

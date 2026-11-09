@@ -28,7 +28,7 @@ async function loadDemos() {
     import('../demos/overlays.js'),
     import('../demos/icons.js'),
     import('../demos/virtual-scroll.js'),
-    import('../demos/table-cases.js')
+    import('../demos/table-cases.js?v=46838c704e')
   ]);
 }
 

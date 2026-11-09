@@ -23,7 +23,12 @@ import '@plcmp/pl-table';
 
 <div class="demo"><pl-doc-table-basic></pl-doc-table-basic></div>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../demos/table/basic.js ':include :type=code javascript')
+
+</details>
 
 ## Свойства
 

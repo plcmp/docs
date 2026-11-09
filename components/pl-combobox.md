@@ -55,7 +55,12 @@ import '@plcmp/pl-combobox';
 
 Список фильтруется по `textProperty`, начиная с двух символов. Поиск не учитывает регистр. В дереве сохраняются родители найденных строк. `allow-custom-value` разрешает записать введённый текст в `value`, даже если такого варианта нет в `data`. При выключенном свойстве введённый текст сам по себе не означает новый выбранный ключ.
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../demos/combobox.js ':include :type=code javascript')
+
+</details>
 
 ## Свойства pl-combobox
 

@@ -4,7 +4,12 @@
 
 <div class="demo"><pl-doc-table-variable-height></pl-doc-table-variable-height></div>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../../demos/table/variable-height.js ':include :type=code javascript')
+
+</details>
 
 Высота строки меняется вслед за содержимым. Если свойство выключено, таблица использует обычную высоту строки и однострочное отображение.
 

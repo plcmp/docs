@@ -105,6 +105,9 @@ const id = event.target.dataset.id;
 
 Для обычной синхронизации значения используй `{{value}}`. Когда нужен именно обработчик дефисного DOM-события, подпишись на его точное имя через `addEventListener` и сними подписку при отключении элемента:
 
+<details class="docs-code">
+<summary>Код JavaScript</summary>
+
 ```js
 import { html, PlElement } from 'polylib';
 import '@plcmp/pl-input';
@@ -136,6 +139,8 @@ class PlValueField extends PlElement {
 
 customElements.define('pl-value-field', PlValueField);
 ```
+
+</details>
 
 Стрелочная функция хранит `this` компонента: обычный метод, переданный в `addEventListener`, вызвался бы с `this`, равным целевому элементу.
 

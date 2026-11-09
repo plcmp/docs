@@ -63,7 +63,12 @@ import '@plcmp/pl-icon-button';
   </pl-flex-layout>
 </div>
 
+<details class="docs-code">
+<summary>Регистрация набора demo</summary>
+
 [Регистрация набора demo](../assets/iconset.js ':include :type=code javascript')
+
+</details>
 
 `pl-iconset` читает группы после события `slotchange`. Дождись регистрации набора, затем создавай элементы `pl-icon`. В примере `currentColor` позволяет значку наследовать цвет кнопки; отдельная палитра ему не нужна.
 

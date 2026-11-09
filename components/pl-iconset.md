@@ -38,7 +38,12 @@ import '@plcmp/pl-iconset';
 <pl-icon iconset="shapes" icon="circle" size="24"></pl-icon>
 ```
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../demos/icons.js ':include :type=code javascript')
+
+</details>
 
 ## Свойства
 

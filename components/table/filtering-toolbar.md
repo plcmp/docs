@@ -4,7 +4,12 @@
 
 <div class="demo"><pl-doc-table-filtering-toolbar></pl-doc-table-filtering-toolbar></div>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../../demos/table/filtering-toolbar.js ':include :type=code javascript')
+
+</details>
 
 Поле ищет по имени и отделу, список ограничивает результат выбранным отделом. Условия можно сочетать. Кнопка «Сбросить фильтры» возвращает все шесть строк.
 

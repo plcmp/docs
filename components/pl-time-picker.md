@@ -22,7 +22,12 @@ import '@plcmp/pl-datetime/pl-time-picker.js';
   mode="{{mode}}" on-done="[[timeSelected]]"></pl-time-picker>
 ```
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../demos/time-picker.js ':include :type=code javascript')
+
+</details>
 
 ## Свойства
 

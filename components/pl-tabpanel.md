@@ -36,7 +36,12 @@ import '@plcmp/pl-icon';
 
 Контейнеру нужна определённая высота: содержимое выбранной вкладки размещается абсолютно внутри панели.
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../demos/tabs.js ':include :type=code javascript')
+
+</details>
 
 ## Свойства
 

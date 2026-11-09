@@ -54,7 +54,12 @@ canAdd(pr) {
 
 <div class="demo"><pl-doc-company-access-demo></pl-doc-company-access-demo></div>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../demos/company-access.js ':include :type=code javascript')
+
+</details>
 
 См. также: [действия](/nfjs/actions) и [чтение коллекций](/nfjs/datasets).
 

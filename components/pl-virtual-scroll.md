@@ -49,7 +49,12 @@ selectEmployee(event) {
 
 <div class="demo"><pl-doc-virtual-demo variable></pl-doc-virtual-demo></div>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../demos/virtual-scroll.js ':include :type=code javascript')
+
+</details>
 
 ## Свойства
 

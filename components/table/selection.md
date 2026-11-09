@@ -4,7 +4,12 @@
 
 <div class="demo"><pl-doc-table-selection></pl-doc-table-selection></div>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../../demos/table/selection.js ':include :type=code javascript')
+
+</details>
 
 Пустое начальное значение — `null`. Используй `selected="{{employee}}"`, если выбранная запись нужна родительской форме.
 

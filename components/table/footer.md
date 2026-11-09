@@ -4,7 +4,12 @@
 
 <div class="demo"><pl-doc-table-footer></pl-doc-table-footer></div>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../../demos/table/footer.js ':include :type=code javascript')
+
+</details>
 
 Под именами показано количество сотрудников, под часами — общее отработанное время, под окладами и премиями — их суммы. Последняя колонка суммирует всё начисленное. Итоги стоят непосредственно под своими полями. `bottom-toolbar` служит для общей панели под таблицей; он не выравнивает итоги по колонкам. См. [пример нижней панели](/components/table/slots).
 

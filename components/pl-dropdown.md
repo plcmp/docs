@@ -31,7 +31,12 @@ closeMenu() { this.$.menu.close(); }
 
 Присваивание `opened = true` не выполняет позиционирование и подключение обработчиков. Открывай и закрывай контейнер методами; свойство `opened` используй для чтения состояния.
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../demos/dropdown.js ':include :type=code javascript')
+
+</details>
 
 ## Свойства
 

@@ -36,7 +36,12 @@ this.$.calendar.addEventListener('on-day-click', event => {
 
 В полном примере обработчик сохраняется в поле и снимается при отключении компонента.
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../demos/calendar.js ':include :type=code javascript')
+
+</details>
 
 ## Свойства
 

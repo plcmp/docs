@@ -86,7 +86,12 @@ selectRow(event) {
 <div class="demo"><pl-doc-template-demo></pl-doc-template-demo></div>
 <p class="demo-status" role="status">Загружаем примеры…</p>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../demos/templates.js ':include :type=code javascript')
+
+</details>
 
 Введи текст в оба поля, затем скрой и покажи их флажком. Первое поле сохранит введённое, второе создастся заново. Кнопки списка выбирают строку через `event.model.row`.
 

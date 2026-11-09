@@ -56,7 +56,12 @@ show() { this.$.popup.show(this.$.anchor); }
 hide() { this.$.popup.hide(); }
 ```
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../demos/popover.js ':include :type=code javascript')
+
+</details>
 
 ## Свойства
 

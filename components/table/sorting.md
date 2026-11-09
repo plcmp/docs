@@ -4,7 +4,12 @@
 
 <div class="demo"><pl-doc-table-sorting></pl-doc-table-sorting></div>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../../demos/table/sorting.js ':include :type=code javascript')
+
+</details>
 
 В примере наблюдатель обрабатывает изменение `rows.sorts` и переставляет элементы обычного массива через `splice`. `pl-dataset` выполняет новый запрос при изменении сортировки. Обычный массив сам по себе не сортируется.
 

@@ -6,7 +6,12 @@
 
 <div class="demo"><pl-doc-table-tree></pl-doc-table-tree></div>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../../demos/table/tree.js ':include :type=code javascript')
+
+</details>
 
 Корневая запись имеет `parentId: null`. Узел раскрывается, если его идентификатор указан как `parentId` у другой записи. Для частично загруженного дерева настрой `has-child-field`; `pl-data-tree` строит видимую иерархию.
 

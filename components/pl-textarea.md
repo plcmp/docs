@@ -27,7 +27,12 @@ import '@plcmp/pl-textarea';
 
 <div class="demo"><pl-doc-textarea-demo></pl-doc-textarea-demo></div>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../demos/textarea.js ':include :type=code javascript')
+
+</details>
 
 Ввод передаётся в `value` с задержкой 100 мс. Валидация асинхронная: не считывай `invalid` сразу после присваивания `value` в том же синхронном вызове. Для формы с несколькими полями используй [общий наблюдатель валидации](/nfjs/validation).
 

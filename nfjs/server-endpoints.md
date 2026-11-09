@@ -85,6 +85,9 @@ serverEndpoints = {
   args="[[_compose('...;contacts', employee, contacts)]]"></pl-action>
 ```
 
+<details class="docs-code">
+<summary>Код JavaScript</summary>
+
 ```js
 serverEndpoints = {
   action: {
@@ -122,6 +125,8 @@ serverEndpoints = {
 }//serverEndpoints
 ```
 
+</details>
+
 `@main` получает весь корневой объект. Карта `args` применяется к вложенным обработчикам; для основной записи нужную форму аргументов собирай на клиенте. `company.employee.mod` в Demo-company выбирает существующую операцию `add` или `upd` по наличию `id`. Новая операция с кодом `mod` для этого не регистрируется.
 
 Стандартный табличный broker Demo-company оставляет только ключи, совпавшие с колонками раздела. Поэтому вложенное поле `contacts` не попадёт в запись сотрудника. `out: 'id'` переносит полученный `data.id` в корневые аргументы; `employee_id: '/id'` передаёт его каждому контакту.
@@ -144,6 +149,9 @@ serverEndpoints = {
 Исполнитель рекурсивно обходит вложенные пути. В Demo-company связи устроены так: `employee_card.employee_id → employee.id`, `employee_card_inoperability.card_id → employee_card.id`. После создания сотрудника карточка получает его `/id`. После создания карточки её обработчик записывает `out: 'id'`, и вложенный период получает `/cards.id`.
 
 Фрагмент конфигурации для этих трёх уровней:
+
+<details class="docs-code">
+<summary>Код JavaScript</summary>
 
 ```js
 serverEndpoints = {
@@ -207,6 +215,8 @@ serverEndpoints = {
 }//serverEndpoints
 ```
 
+</details>
+
 На форме для этой конфигурации нужны `paths="cards,cards.inoperabilities"` и аргументы с полями сотрудника и массивом `cards`. По `$action` строки выбирается обработчик `@add`, `@upd` или `@del`. Фильтр `@each` запускает обработчик для каждой строки. Вложенный обход продолжается и для родителя с `$action: 'touch'`; отдельный `@touch` не нужен.
 
 При смешанных правках в `pl-data-observer` карточка может одновременно оказаться в `upd` и `touch`, что приведёт к повторному обходу её периодов. Для такого редактора выделяй отдельные наблюдатели и команды по карточкам. Подробный [разбор этого случая](/nfjs/nested-changes).
@@ -229,6 +239,9 @@ serverEndpoints = {
 <pl-data-observer id="obPeriods" data="{{inoperabilities}}"
   is-changed="{{periodsChanged}}"></pl-data-observer>
 ```
+
+<details class="docs-code">
+<summary>Код JavaScript</summary>
 
 ```js
 serverEndpoints = {
@@ -268,6 +281,8 @@ serverEndpoints = {
   }
 }//serverEndpoints
 ```
+
+</details>
 
 ```js
 await this.$.aSavePeriods.execute({

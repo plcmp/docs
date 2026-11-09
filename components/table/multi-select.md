@@ -4,7 +4,12 @@
 
 <div class="demo"><pl-doc-table-multiselect></pl-doc-table-multiselect></div>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../../demos/table/multi-select.js ':include :type=code javascript')
+
+</details>
 
 Таблица добавляет выбранные записи в `selectedList` и удаляет их при повторном клике по флажку. Родительские и дочерние записи не связаны автоматически. Для внешнего состояния флажка используй `external-select` и `row._selected`.
 

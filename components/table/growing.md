@@ -4,7 +4,12 @@
 
 <div class="demo"><pl-doc-table-growing></pl-doc-table-growing></div>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../../demos/table/growing.js ':include :type=code javascript')
+
+</details>
 
 Добавь несколько строк: нижняя граница таблицы сдвинется, а высота каждой строки останется прежней. Сравни с [таблицей фиксированной высоты](/components/table/fixed-height), где новые строки появляются внутри области прокрутки.
 

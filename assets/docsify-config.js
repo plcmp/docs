@@ -109,7 +109,7 @@ window.$docsify = {
     ],
     depth: 3,
     maxAge: 86400000,
-    namespace: `polylib-docs-${window.location.pathname}-a6844a10c3`,
+    namespace: `polylib-docs-${window.location.pathname}-fc8cbf22ab`,
     insertAfter: '.app-name',
     placeholder: 'Поиск по документации',
     noData: 'Ничего не найдено',

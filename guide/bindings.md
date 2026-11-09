@@ -93,7 +93,12 @@ readName(event) {
 
 Измени имя: `value="{{name}}"` возвращает ввод родителю, а `[[greeting(name)]]` обновляет приветствие. Флажок меняет `enabled`; связь `disabled="[[!enabled]]"` включает и отключает поле.
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../demos/bindings.js ':include :type=code javascript')
+
+</details>
 
 См. также: [реактивность](/guide/reactivity), [события](/guide/events), [шаблоны](/guide/templates), [формы NFJS](/nfjs/forms).
 

@@ -77,7 +77,12 @@ async saveEmployee() {
 
 <div class="demo"><pl-doc-company-data-demo></pl-doc-company-data-demo></div>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../demos/company-data.js ':include :type=code javascript')
+
+</details>
 
 См. также: [REST-обработчик Demo-company](/nfjs/rest), [вложенные операции serverEndpoints](/nfjs/server-endpoints), [чтение коллекций](/nfjs/datasets).
 

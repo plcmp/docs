@@ -30,7 +30,12 @@ import '@plcmp/pl-datetime';
 
 При обязательном поле свяжи `invalid` или используй [pl-valid-observer](/nfjs/validation). Неполный ввод не является готовой датой: `value` становится `null`.
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../demos/datetime.js ':include :type=code javascript')
+
+</details>
 
 ## Свойства
 

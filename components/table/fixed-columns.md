@@ -4,7 +4,12 @@
 
 <div class="demo"><pl-doc-table-fixed-columns></pl-doc-table-fixed-columns></div>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../../demos/table/fixed-columns.js ':include :type=code javascript')
+
+</details>
 
 Ширина задаётся в пикселях через `width`, минимальная ширина — через `min-width`. Зафиксированные колонки продолжают занимать место в горизонтальной раскладке.
 

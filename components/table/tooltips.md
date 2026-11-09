@@ -4,7 +4,12 @@
 
 <div class="demo"><pl-doc-table-tooltips></pl-doc-table-tooltips></div>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../../demos/table/tooltips.js ':include :type=code javascript')
+
+</details>
 
 В примере имя сотрудника открывает карточку с инициалами, отделом, датой и заметкой. Рядом `tooltip-field="note"` показывает ту же заметку как короткую текстовую подсказку. Инициалы собраны из имени сотрудника.
 

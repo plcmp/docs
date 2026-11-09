@@ -4,7 +4,12 @@
 
 <div class="demo"><pl-doc-table-editing></pl-doc-table-editing></div>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../../demos/table/editing.js ':include :type=code javascript')
+
+</details>
 
 В демо `pl-input` использует двустороннюю связь `{{row.name}}`, а таблица получает массив через `data="{{rows}}"`. Сохранение на сервере, проверки и отмену изменений задаёт приложение.
 

@@ -164,7 +164,12 @@ removePeriod(event) {
 
 ## Код примера
 
+<details class="docs-code">
+<summary>Редакторы карточек и вложенных периодов</summary>
+
 [Редакторы карточек и вложенных периодов](../demos/company-cards.js ':include :type=code javascript')
+
+</details>
 
 См. также: [снимки и журналы](/nfjs/change-tracking), [сохранение части формы](/nfjs/partial-save), [субформы](/nfjs/subforms).
 

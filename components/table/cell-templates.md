@@ -6,7 +6,12 @@
 
 <div class="demo"><pl-doc-table-cell-template></pl-doc-table-cell-template></div>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../../demos/table/cell-templates.js ':include :type=code javascript')
+
+</details>
 
 `pl-flex-layout vertical` располагает текст столбцом. `variable-row-height` позволяет строке вместить подстроку и переносы длинного описания. Стили ячеек переданы через `<template is="extra styles">`: обычный CSS снаружи не проникает в Shadow DOM таблицы.
 

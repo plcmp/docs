@@ -17,7 +17,12 @@ import { PlElement, html, css } from 'polylib';
 <div class="demo"><pl-doc-counter></pl-doc-counter></div>
 <p class="demo-status" role="status">Загружаем примеры…</p>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../demos/counter.js ':include :type=code javascript')
+
+</details>
 
 `static properties` объявляет реактивное состояние. `static template` описывает DOM. `static css` оформляет внутренние элементы. `customElements.define` регистрирует класс под HTML-тегом один раз.
 

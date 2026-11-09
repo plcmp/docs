@@ -4,7 +4,12 @@
 
 <div class="demo"><pl-doc-table-formatting></pl-doc-table-formatting></div>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../../demos/table/formatting.js ':include :type=code javascript')
+
+</details>
 
 `date` использует Day.js; по умолчанию формат — `DD.MM.YYYY`. `number` форматирует в локали `ru-RU`; маска использует `0` для обязательного и `#` для необязательного десятичного знака.
 

@@ -21,7 +21,12 @@ import '@plcmp/pl-flex-layout';
 </div>
 <p class="demo-status" role="status">Загружаем примеры…</p>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../demos/flex-layout.js ':include :type=code javascript')
+
+</details>
 
 ## Перенос и выравнивание
 

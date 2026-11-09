@@ -114,7 +114,12 @@ onClose() {
 
 ## Код примера
 
+<details class="docs-code">
+<summary>Редактор сотрудника и контактов</summary>
+
 [Редактор сотрудника и контактов](../demos/company-editor.js ':include :type=code javascript')
+
+</details>
 
 Следующий шаг — [личные карточки со своими действиями и вложенными периодами](/nfjs/nested-changes).
 

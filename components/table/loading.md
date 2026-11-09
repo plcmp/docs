@@ -4,7 +4,12 @@
 
 <div class="demo"><pl-doc-table-loading></pl-doc-table-loading></div>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../../demos/table/loading.js ':include :type=code javascript')
+
+</details>
 
 При уже загруженных строках обновление помечает текущие строки как загружаемые. `skeleton-height` настраивает высоту скелетона в режиме переменной высоты.
 

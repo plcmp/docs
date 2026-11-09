@@ -37,7 +37,12 @@ import '@plcmp/pl-tooltip';
 
 Вложенный `<template>` обрабатывается в шаблоне Polylib. `keep-hover` позволяет перевести указатель с цели на подсказку.
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../demos/tooltip.js ':include :type=code javascript')
+
+</details>
 
 ## Свойства
 

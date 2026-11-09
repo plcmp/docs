@@ -26,7 +26,12 @@ import '@plcmp/pl-radio-button/pl-radio.js';
 </pl-radio-group>
 ```
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../demos/radio.js ':include :type=code javascript')
+
+</details>
 
 ## Свойства
 

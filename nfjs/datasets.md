@@ -84,7 +84,12 @@ const { data, metaData } = await this.$.dsContacts.execute(
 
 <div class="demo"><pl-doc-company-data-demo></pl-doc-company-data-demo></div>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../demos/company-data.js ':include :type=code javascript')
+
+</details>
 
 См. также: [действия](/nfjs/actions), [вложенные изменения и журналы](/nfjs/nested-changes).
 

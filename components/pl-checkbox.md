@@ -41,7 +41,12 @@ import '@plcmp/pl-checkbox';
 
 <div class="demo"><pl-doc-checkbox-demo></pl-doc-checkbox-demo></div>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../demos/checkbox.js ':include :type=code javascript')
+
+</details>
 
 Используй `checked="{{enabled}}"`, когда пользователь меняет значение. Связь `[[enabled]]` передаёт состояние только вниз и не возвращает изменение родителю.
 

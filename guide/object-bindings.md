@@ -101,7 +101,12 @@ draft.contact.email = 'new@example.org';
 
 ## Код примера
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../demos/object-bindings.js ':include :type=code javascript')
+
+</details>
 
 Продолжение — [технические нюансы](/guide/edge-cases): один объект по разным путям, последовательность вызова наблюдателей и состояние элементов в повторе.
 

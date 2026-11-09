@@ -9,7 +9,12 @@
 
 <div class="demo"><pl-doc-table-slots></pl-doc-table-slots></div>
 
+<details class="docs-code">
+<summary>Полный код примера</summary>
+
 [Код примера](../../demos/table/slots.js ':include :type=code javascript')
+
+</details>
 
 Верхняя панель показывает «Сотрудники», добавляет запись или удаляет выбранную. Нижняя показывает число строк и выбранного сотрудника; кнопка восстанавливает исходный список. Выбери строку кликом, чтобы включить удаление.
 

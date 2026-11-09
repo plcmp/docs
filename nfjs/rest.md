@@ -31,6 +31,9 @@ POST-тело `pl-action` имеет вид `{ args: ... }`. `/employee/get` ч�
 
 Обработчик сохранения:
 
+<details class="docs-code">
+<summary>Код JavaScript</summary>
+
 ```js
 import { dbapi } from '@nfjs/back';
 import { api } from '@nfjs/core';
@@ -69,6 +72,8 @@ export async function save(context) {
   }
 }
 ```
+
+</details>
 
 `pl-data-observer` формирует `_mutations` на коллекции контактов. Форма передаёт именно эти группы; REST-обработчик управляет транзакцией и связывает новые строки с сотрудником. Подробности о `$action` и `paths` — в [изменениях вложенных данных](/nfjs/nested-changes).
 
