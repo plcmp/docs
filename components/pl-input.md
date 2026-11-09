@@ -1,283 +1,116 @@
-# Pl-Input
-Текстовое поле предоставляет пользователю возможность ввода значений в форму.
+# pl-input
 
-<pl-input label="Label"></pl-input>
+Однострочное поле ввода с подписью, проверкой значения и слотами для дополнительного содержимого.
 
-```html
-<pl-input label="Label"></pl-input>
+Пакет: `@plcmp/pl-input`.
 
+## Подключение
+
+```js
+import '@plcmp/pl-input';
 ```
 
+## Значение и подпись
 
-## Examples
-
-### Orientation
-Используйте `orientation` для изменения расположения текста
-
-<pl-input label="Horizontal label" orientation="horizontal"></pl-input>
-
-```html
-<pl-input label="Horizontal label" orientation="horizontal"></pl-input>
-```
-
-<pl-input label="Vertical label" orientation="vertical"></pl-input>
+<div class="demo demo-stack">
+  <pl-input label="Название" placeholder="Введи название" stretch></pl-input>
+  <pl-input label="Код" value="DEMO" orientation="horizontal" label-width="80" content-width="160"></pl-input>
+</div>
+<p class="demo-status" role="status">Загружаем примеры…</p>
 
 ```html
-<pl-input label="Vertical label" orientation="vertical"></pl-input>
+<pl-input label="Название" placeholder="Введи название" stretch></pl-input>
+<pl-input label="Код" value="DEMO" orientation="horizontal" label-width="80" content-width="160"></pl-input>
 ```
 
+В шаблоне формы связывай редактируемое значение через `value="{{title}}"`. Пример с обновлением родительского состояния — в главе [биндинги](/guide/bindings).
 
-### Type
-Используйте `type` для измененя способа ввода значений
+## Типы ввода
 
-<pl-input label="text" type="text"></pl-input>
-<br>
-<pl-input label="number" type="number"></pl-input>
-<br>
-<pl-input label="password" type="password"></pl-input>
-<br>
-<pl-input label="range" type="range"></pl-input>
-<br>
-<pl-input label="color" type="color"></pl-input>
+<div class="demo demo-stack">
+  <pl-input label="Количество" type="number" min="1" max="10" step="1" value="2"></pl-input>
+  <pl-input label="Пароль" type="password" placeholder="Введи пароль"></pl-input>
+  <pl-input label="Уровень" type="range" min="0" max="100" value="40"></pl-input>
+  <pl-input label="Цвет" type="color" value="#3a817d"></pl-input>
+</div>
 
-<details>
-    <summary>html</summary>
+```html
+<pl-input label="Количество" type="number" min="1" max="10" step="1" value="2"></pl-input>
+<pl-input label="Пароль" type="password"></pl-input>
+<pl-input label="Уровень" type="range" min="0" max="100" value="40"></pl-input>
+<pl-input label="Цвет" type="color" value="#3a817d"></pl-input>
+```
 
-    <pl-input label="text" type="text"></pl-input>
-    <pl-input label="number" type="number"></pl-input>
-    <pl-input label="password" type="password"></pl-input>
-    <pl-input label="range" type="range"></pl-input>
-    <pl-input label="color" type="color"></pl-input>
-</details>
+При вводе значение поступает строкой с задержкой 100 мс. Для `type="number"` обработчик потери фокуса преобразует его в число, а пустое поле — в `null`. Не считай значение числом на каждом промежуточном шаге ввода.
 
-### Value
-Используйте `value` для того что бы установить значение по умолчанию
+## Валидация и состояния
 
-<pl-input label="Поле со значением по умолчанию" value="тест" orientation="horizontal"></pl-input>
+<div class="demo demo-stack">
+  <pl-input label="Обязательное название" required placeholder="Введи текст" stretch></pl-input>
+  <pl-input label="Код из цифр" pattern="^[0-9]+$" value="abc" stretch></pl-input>
+  <pl-input label="Только чтение" readonly value="Утверждено" stretch></pl-input>
+  <pl-input label="Недоступное поле" disabled value="Отключено" stretch></pl-input>
+</div>
 
-<details>
-    <summary>html</summary>
+```html
+<pl-input label="Обязательное название" value="{{title}}" required invalid="{{invalid}}"></pl-input>
+<pl-input label="Код из цифр" pattern="^[0-9]+$"></pl-input>
+<pl-input label="Только чтение" readonly value="Утверждено"></pl-input>
+<pl-input label="Недоступное поле" disabled value="Отключено"></pl-input>
+```
 
-    <pl-input label="Поле со значением по умолчанию" value="тест" orientation="horizontal"></pl-input>
-</details>
+`invalid` вычисляет компонент. Для нескольких полей используй [наблюдатель валидации](/integration/validation). Стандартная проверка `required` не удаляет пробелы.
 
-### ContentWidth
-Используйте `сontentWidth` для установки ширины контейнера
+## Слоты
 
-<pl-input label="contentWidth=500" content-width="500" orientation="horizontal"></pl-input>
-<br>
-<pl-input label="contentWidth=130" content-width="130" orientation="horizontal"></pl-input>
+<div class="demo">
+  <pl-input label="Поиск" placeholder="Название документа" stretch>
+    <pl-icon slot="prefix" iconset="demo" icon="search"></pl-icon>
+  </pl-input>
+</div>
 
-<details>
-    <summary>html</summary>
-
-    <pl-input label="content-width=500" content-width="500" orientation="horizontal"></pl-input>
-
-    <pl-input label="content-width=130" content-width="130" orientation="horizontal"></pl-input>
-</details>
-
-### LabelWidth
-Используйте `labelWidth` для установки ширины подписи
-
-<pl-input label="labelWidth=110" label-width="110" orientation="horizontal"></pl-input>
-<br>
-<pl-input label="labelWidth=130" label-width="130" orientation="horizontal"></pl-input>
-
-<details>
-    <summary>html</summary>
-
-    <pl-input label="labelWidth=110" label-width="110" orientation="horizontal"></pl-input>
-
-    <pl-input label="labelWidth=130" label-width="130" orientation="horizontal"></pl-input>
-</details>
-
-### Title
-Используйте `title` что бы вывести подсказку при наведении на поле ввода
-
-<pl-input label="Всплывающая подсказка" label-width="170" title="Текст подсказки" orientation="horizontal"></pl-input>
-
-<details>
-    <summary>html</summary>
-
-    <pl-input label="Поле ввода с подсказкой" label-width="170" title="Текст подсказки" orientation="horizontal"></pl-input>
-</details>
-
-### Placeholder
-Используйте `placeholder` для того что бы вывести подсказку в поле у которого еще не введено значение
-
-<pl-input label="Подсказка в поле ввода" label-width="170" placeholder="Текст подсказки" orientation="horizontal"></pl-input>
-
-<details>
-    <summary>html</summary>
-
-    <pl-input label="Подсказка в поле ввода" label-width="170" placeholder="Текст подсказки" orientation="horizontal"><pl-input>
-</details>
-
-### Pattern
-Используйте `pattern` для того что бы установить регулярное выражение для валидации значения
-
-<pl-input label="Поле ввода с валидацией" label-width="170" pattern="^\d+$" placeholder="Для ввода доступны только цифры" orientation="horizontal"></pl-input>
-
-<details>
-    <summary>html</summary>
-
-    <pl-input label="Подсказка в поле ввода" label-width="170" placeholder="Текст подсказки" orientation="horizontal">
-    <pl-input>
-</details>
-
-### Min, max, step
-Для поля с `type = number` используйте `min` для установки минимального допустимого значения, `max` для установки макисмального допустимого значения, `step` для шага изменения значения.
-
-<pl-input label="Числа от 100" type="number" label-width="100" min="100" orientation="horizontal"></pl-input>
-<br>
-<pl-input label="Числа до 5" type="number" label-width="100" max="5" orientation="horizontal"></pl-input>
-<br>
-<pl-input label="Изменение значения на 100" type="number" label-width="100" step="100" orientation="horizontal"></pl-input>
-
-<details>
-    <summary>html</summary>
-
-    <pl-input label="Числа от 100" type="number" label-width="100" min="100" orientation="horizontal"></pl-input>
-    <br>
-    <pl-input label="Числа до 5" type="number" label-width="100" max="5" orientation="horizontal"></pl-input>
-    <br>
-    <pl-input label="Изменение значения на 100" type="number" label-width="100" step="100" orientation="horizontal"></pl-input>
-</details>
-
-### Readonly
-Используйте `readonly` для запрета ввода значений
-
-<pl-input label="Заблокированное поле" value="Тест" readonly label-width="140" orientation="horizontal"></pl-input>
-
-<details>
-    <summary>html</summary>
-
-    <pl-input label="Заблокированное поле" value="Тест" readonly label-width="140" orientation="horizontal"></pl-input>
-</details>
-
-
-### Required
-Используйте `required` если поле обязатльно для заполнения
-
-<pl-input label="Не заполненное поле" required label-width="140" orientation="horizontal"></pl-input>
-<br>
-<pl-input label="Заполненное поле" required value="Тест" readonly label-width="140" orientation="horizontal"></pl-input>
-
-<details>
-    <summary>html</summary>
-
-    <pl-input label="Не заполненное поле" required label-width="140" orientation="horizontal"></pl-input>
-
-    <pl-input label="Заполненное поле" required value="Тест" readonly label-width="140" orientation="horizontal"></pl-input>
-</details>
-
-
-### Invalid
-`invalid` определяет является ли введеное значение в поле валидным, вычисляется автоматический.
-
-### Disabled
-Используйте `disabled` что бы сделать поле не активным
-<pl-input label="Активное поле" disabled="false" label-width="140" orientation="horizontal"></pl-input>
-<br>
-<pl-input label="Не активное поле" disabled label-width="140" orientation="horizontal"></pl-input>
-
-<details>
-    <summary>html</summary>
-
-    <pl-input label="Активное поле" disabled="false" label-width="140" orientation="horizontal"></pl-input>
-
-    <pl-input label="Не активное поле" disabled label-width="140" orientation="horizontal"></pl-input>
-</details>
-
-### Stretch
-Используйте `stretch` что бы растянуть компонент по ширине внешнего контейнера
-<pl-input label="Не растянуто" stretch="false" label-width="140" orientation="horizontal"></pl-input>
-<br>
-<pl-input label="Растянуто" stretch label-width="140" orientation="horizontal"></pl-input>
-
-<details>
-    <summary>html</summary>
-
-    <pl-input label="Не растянуто" stretch="false" label-width="140" orientation="horizontal"></pl-input>
-
-    <pl-input label="Растянуто" stretch label-width="140" orientation="horizontal"></pl-input>
-</details>
-
-### Slots
-Используйте `label-prefix` или `label-suffix` для того что бы добавить иконку к подписи
-<pl-input label="Текст" label-width="60" orientation="horizontal">
-    <pl-icon slot="label-prefix" variant="primary" iconset="pl-default" size="16" icon="settings"></pl-icon>
+```html
+<pl-input label="Поиск" placeholder="Название документа" stretch>
+  <pl-icon slot="prefix" iconset="demo" icon="search"></pl-icon>
 </pl-input>
-<br>
-<pl-input label="Текст" label-width="60" orientation="horizontal">
-    <pl-icon slot="label-suffix" variant="primary" iconset="pl-default" size="16" icon="settings"></pl-icon>
-</pl-input>
+```
 
-<details>
-    <summary>html</summary>
+| Слот | Назначение |
+| --- | --- |
+| `label-prefix` | Содержимое перед подписью |
+| `label-suffix` | Содержимое после подписи |
+| `prefix` | Содержимое перед полем ввода |
+| `suffix` | Содержимое после поля ввода |
+| `input` | Дополнительное содержимое области ввода |
+| По умолчанию | Содержимое после контейнера |
 
-    <pl-input label="Текст" label-width="60" orientation="horizontal">
-        <pl-icon slot="label-prefix" variant="primary" iconset="pl-default" size="16" icon="settings"></pl-icon>
-    </pl-input>
-    <br>
-    <pl-input label="Текст" label-width="60" orientation="horizontal">
-        <pl-icon slot="label-suffix" variant="primary" iconset="pl-default" size="16" icon="settings"></pl-icon>
-    </pl-input>
-</details>
+## Свойства
 
-Используйте `prefix` или `suffix` для того что бы добавить иконку к полю ввода
-<pl-input label="Текст" label-width="60" orientation="horizontal">
-    <pl-icon slot="prefix" variant="primary" iconset="pl-default" size="16" icon="settings"></pl-icon>
-</pl-input>
-<br>
-<pl-input label="Текст" label-width="60" orientation="horizontal">
-    <pl-icon slot="suffix" variant="primary" iconset="pl-default" size="16" icon="settings"></pl-icon>
-</pl-input>
+| Свойство | Тип | По умолчанию | Описание |
+| --- | --- | --- | --- |
+| `label` | `String` | `undefined` | Подпись поля |
+| `title` | `String` | `undefined` | Подсказка браузера при наведении на поле |
+| `orientation` | `String` | `undefined` | Расположение подписи: `horizontal` — слева, `vertical` — сверху |
+| `type` | `String` | `text` | Тип нативного поля |
+| `value` | `String` | `undefined` | Значение поля. Объявлен тип `String`; при `type="number"` после потери фокуса значение может стать числом — см. пример выше |
+| `placeholder` | `String` | `''` | Подсказка пустого поля |
+| `contentWidth` | `Number` | `undefined` | Ширина области ввода в px; без значения используется ширина из темы |
+| `labelWidth` | `Number` | `undefined` | Ширина подписи в px; без значения используется ширина из темы |
+| `pattern` | `String` | `undefined` | Регулярное выражение проверки |
+| `min` | `Number` | `undefined` | Нижняя граница числового значения; передаётся нативному полю. Встроенный валидатор пропускает границу `0` |
+| `max` | `Number` | `undefined` | Верхняя граница числового значения; передаётся нативному полю. Встроенный валидатор пропускает границу `0` |
+| `step` | `String` | `undefined` | Шаг нативного поля |
+| `required` | `Boolean` | `undefined` | Делает поле обязательным: значения `''`, `null` и `undefined` не проходят проверку |
+| `readonly` | `Boolean` | `undefined` | Запрещает редактирование; значение продолжает проверяться валидаторами |
+| `disabled` | `Boolean` | `undefined` | Отключает ввод и фокусировку; отключённое поле не считается невалидным |
+| `hidden` | `Boolean` | `undefined` | Скрывает компонент целиком, включая подпись |
+| `stretch` | `Boolean` | `undefined` | Растягивает компонент на всю доступную ширину |
+| `invalid` | `Boolean` | `undefined` | Признак ошибки, который компонент пересчитывает при проверке значения |
+| `autocomplete` | `Boolean` | `false` | Управляет нативным `autocomplete` (`on`/`off`) |
 
-<details>
-    <summary>html</summary>
+Уведомления `value-changed` и `invalid-changed` используются биндингами Polylib. `validation-changed` сообщает о завершении проверки. `validate()` возвращает Promise; результат проверки находится в `invalid`.
 
-    
-    ```html
-    <pl-input label="Текст" label-width="60" orientation="horizontal">
-        <pl-icon slot="prefix" variant="primary" iconset="pl-default" size="16" icon="settings"></pl-icon>
-    </pl-input>
-    <br>
-    <pl-input label="Текст" label-width="60" orientation="horizontal">
-        <pl-icon slot="suffix" variant="primary" iconset="pl-default" size="16" icon="settings"></pl-icon>
-    </pl-input>
-    ```
-</details>
-
-
-## Properties
-
-| Name           | Description                                                                     | ReflectsToAttribute | Type                                           |  Default   |
-| -------------- | ------------------------------------------------------------------------------- | :-----------------: | ---------------------------------------------- | :--------: |
-| `label`        | Текст подписи поля                                                              |          -          | `string`                                       |  (empty)   |
-| `orientation`  | Расположение подписи относительно текстового поля                               |          -          | `horizontal \| vertical`                       | `vertical` |
-| `type`         | Тип ввода                                                                       |          -          | `text \| number \| password \| range \| color` |   `text`   |
-| `value`        | Значение введеное в поле                                                        |          -          | `string`                                       |  (empty)   |
-| `contentWidth` | Значение ширины поля ввода<br> *По умолчанию задается ширина в 240px*           |          -          | `number`                                       |  (empty)   |
-| `labelWidth`   | Значение ширны подписи поля<br> *По умолчанию задается ширина в 240px*          |          -          | `number`                                       |  (empty)   |
-| `title`        | Текст подсказки                                                                 |          -          | `string`                                       |  (empty)   |
-| `placeholder`  | Выводит текст внутри поля формы, который исчезает при получении фокуса          |          -          | `string`                                       |  (empty)   |
-| `pattern`      | Регулярное выражение для валидации значения                                     |          -          | `string`                                       |  (empty)   |
-| `min`          | Минимальное число которое можно ввести в поле<br> *Только для `type = number`*  |          -          | `number`                                       |  (empty)   |
-| `max`          | Максимальное число которое можно ввести в поле<br> *Только для `type = number`* |          -          | `number`                                       |  (empty)   |
-| `step`         | Максимальное число которое можно ввести в поле<br> *Только для `type = number`* |          -          | `boolean`                                      |  (empty)   |
-| `readonly`     | Значение доступно только для чтения                                             |          -          | `boolean`                                      |  `false`   |
-| `required`     | Значение обязательно для заполнения                                             |          -          | `boolean`                                      |  `false`   |
-| `invalid`      | Значение не прошло валидацию<br> *Вычисляется автоматический*                   |          -          | `boolean`                                      |  `false`   |
-| `disabled`     | Отвечает за отключение этой компоненты                                          |          +          | `boolean`                                      |  `false`   |
-| `stretch`      | Растянуть этот компонент                                                        |          +          | `boolean`                                      |  `false`   |
-| `hidden`       | Отвечает за отображение этой компоненты                                         |          +          | `boolean`                                      |  `false`   |
-
-## Slots
-
-| Name           | Description                                                               |
-| -------------- | ------------------------------------------------------------------------- |
-| `label-prefix` | Слот для префикса подписи поля ввода, значки располагаются перед подписью |
-| `label-suffix` | Слот для суфикса подписи поля ввода, значки располагаются после подписи   |
-| `prefix`       | Слот для префикса поля ввода, значки располагаются в начале поля ввода    |
-| `suffix`       | Слот для суфикса поля ввода, значки располагаются в конце поля ввода      |
+<footer class="docs-sources">
+  <span>Исходники:</span>
+  <a href="https://cdn.jsdelivr.net/npm/@plcmp/pl-input/pl-input.js" target="_blank" rel="noopener">pl-input.js</a>
+</footer>

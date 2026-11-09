@@ -1,0 +1,44 @@
+/* Источник: packages/nf-front-pl/static/theme.css. Обновление: node scripts/sync-theme.mjs */
+:root {
+    --pl-base-size: 28px;
+    --pl-border-radius: 4px;
+
+    --pl-primary-base: #3A817D;
+    --pl-primary-dark: #1C635F;
+    --pl-primary-darkest: #244751;
+    --pl-primary-light: #BBD8CB;
+    --pl-primary-lightest: #EAF4EF;
+    
+    --pl-negative-base: #F54A4B;
+    --pl-negative-dark: #C83739;
+    --pl-negative-darkest: #7D2223;
+    --pl-negative-light: #FEC3C4;
+    --pl-negative-lightest: #FFECED;;
+
+    --pl-grey-base: #CAD0D6;
+    --pl-grey-dark: #A6B0B8;
+    --pl-grey-darkest: #85919C;
+    --pl-grey-light: #E9EDF0;
+    --pl-grey-lightest: #F5F6F7;
+
+    --pl-attention: #F2D26E;
+    --pl-background-color: #fff;
+    --pl-surface-color: #fff;
+
+    --pl-header-color: rgba(94, 100, 113, 1);
+    --pl-header-font: normal 500 12px/1.2 apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    --pl-text-font: normal 400 13px/1.2 apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    --pl-text-color: rgba(42, 49, 67, 1);
+
+    --pl-label-width: 240px;
+    --pl-content-width: 240px;
+
+    --pl-space-xxs: 2px;
+    --pl-space-xs: 4px;
+    --pl-space-sm: 8px;
+    --pl-space-md: 12px;
+    --pl-space-lg: 16px;
+
+
+    --pl-menu-background-color: rgba(43, 70, 84, 1);
+}

@@ -1,0 +1,118 @@
+# Реактивность и свойства
+
+Polylib отслеживает присваивания объявленным свойствам и изменения, прошедшие через контекст. `notifyChange` запускает эффекты, затем property observer и событие `<имя-свойства>-changed`.
+
+## Объявление свойств
+
+Descriptor поддерживает `type`, `value`, `observer` и `reflectToAttribute`. Фабрика `value` вызывается при создании экземпляра, если тип свойства не `Function`.
+
+```js
+static properties = {
+  title: { type: String, value: '' },
+  profile: { type: Object, value: () => ({ name: '', city: '' }) },
+  rows: { type: Array, value: () => [] },
+  active: { type: Boolean, value: false, observer: 'activeChanged' }
+};
+
+activeChanged(value, oldValue, mutation) {
+  // Реакция на изменение active.
+}
+```
+
+Для массивов и объектов задавай фабрику. Так каждый экземпляр получает собственное значение.
+
+`type` описывает свойство и участвует в обработке атрибутов, но не проверяет каждое JavaScript-присваивание. Например, `type: Number` не превращает любой вход в число. Приводи внешние значения к нужному типу на границе своего API.
+
+Объявленное свойство уже имеет setter: меняй `this.title`, не создавай поверх него поле класса `title = ''`. В Polylib это вызывает ошибку создания экземпляра `Cannot redefine property`. Примеры — [конфликт поля класса и реактивного свойства](/guide/edge-cases?id=Поле-класса-конфликтует-с-реактивным-свойством).
+
+**Правильно: создавать новое значение для каждого элемента**
+
+```js
+const settingsProperty = { type: Object, value: () => ({}) };
+```
+
+**Неправильно: переиспользовать объект из descriptor**
+
+```js
+const settingsProperty = { type: Object, value: {} };
+```
+
+Последствие общего объекта — состояние одного экземпляра может оказаться общим с другим. В частности, `value: []` в `PlForm.urlParams` — контракт NFJS-класса из текущей интеграции; для своих свойств используй фабрику.
+
+## Обновление данных
+
+```js
+this.set('profile.name', 'Мира');
+this.assign('profile', { name: 'Мира', city: 'Казань' });
+this.push('rows', { id: 3, title: 'Третья' });
+this.splice('rows', 0, 1, { id: 4, title: 'Замена' });
+```
+
+Прямые `obj.field = value`, `array.push(...)` и `array[index] = value` не уведомляют Polylib-контекст. Например, `this.rows.push(row)` может изменить данные, но не обновить повторяющийся DOM. Используй `push`, `splice` или `set`.
+
+Корневой объект или массив должны существовать до вызова метода. `set('profile.name', value)` не создаёт отсутствующий `profile`. Для полной замены модели достаточно `this.profile = nextProfile`; для вложенной правки используй `set`. Присваивание той же ссылки повторного уведомления не даёт.
+
+`assign` уведомляет о каждом поле отдельно, а `push` разворачивает переданный массив как набор элементов. Эти особенности, значение `oldValue` и работу одного объекта по нескольким путям смотри в [технических нюансах](/guide/edge-cases).
+
+**Правильно: сообщить контексту об изменении вложенного поля**
+
+```js
+this.set('profile.name', nextName);
+```
+
+**Неправильно: присвоить вложенное поле напрямую**
+
+```js
+this.profile.name = nextName;
+```
+
+## Observers и вычисления
+
+Одно свойство может иметь `observer: 'method'`. Для зависимости от нескольких путей объяви статический массив строк:
+
+```js
+static properties = {
+  startDate: { type: String },
+  endDate: { type: String },
+  label: { type: String }
+};
+
+static observers = ['rangeChanged(startDate, endDate)'];
+
+rangeChanged(startDate, endDate) {
+  this.label = startDate && endDate ? `${startDate} — ${endDate}` : '';
+}
+```
+
+Observer реагирует на уведомление об изменении. Начальные значения `value`, оставшиеся равными своим defaults, не гарантируют вызов observer при подключении. Если нужна начальная операция, вызови её явно после подключения. Чистое отображение производного значения удобнее вычислять прямо в биндинге.
+
+В `static observers` используется запись `имя(аргументы)`. `computed` в descriptor Polylib не поддержан. Не добавляй `computed: '...'` в свойства и не ожидай автоматического создания свойства.
+
+Функция, вызванная в биндинге, пересчитывается при изменениях перечисленных аргументов. Держи её чистой: одинаковые аргументы дают одинаковое значение, без записи в состояние и без I/O.
+
+**Правильно: синхронно форматировать переданные значения**
+
+```js
+fullName(first, last) {
+  return `${first} ${last}`;
+}
+```
+
+**Неправильно: выполнять I/O внутри функции биндинга**
+
+```js
+async fullName(first, last) {
+  return await fetch(`/name/${first}/${last}`);
+}
+```
+
+Используй `[[fullName(firstName, lastName)]]` для локального форматирования. Функция биндинга не ожидает Promise; асинхронную операцию запускай в обработчике или интеграционном слое и записывай готовый результат в свойство.
+
+Больше: [биндинги](/guide/bindings), [события](/guide/events), [асинхронная работа формы](/guide/lifecycle).
+
+<footer class="docs-sources">
+  <span>Исходники:</span>
+  <a href="https://cdn.jsdelivr.net/npm/polylib/engine/v1/properties.js" target="_blank" rel="noopener">properties.js</a>
+  <a href="https://cdn.jsdelivr.net/npm/polylib/engine/v1/ctx.js" target="_blank" rel="noopener">ctx.js</a>
+  <a href="https://cdn.jsdelivr.net/npm/polylib/template-mixin.js" target="_blank" rel="noopener">template-mixin.js</a>
+</footer>

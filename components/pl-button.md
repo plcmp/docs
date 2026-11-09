@@ -1,139 +1,110 @@
-# Pl-Button 
-Buttons represent actions that are available to the user.
+# pl-button
 
-<pl-button variant="primary">Button</pl-button>
+Кнопка запускает действие. Текст задаётся свойством `label` или содержимым слота по умолчанию.
 
-```html
-<pl-button variant="primary" label="Button"></pl-button>
-or
-<pl-button variant="primary">Button</pl-button>
+Пакет: `@plcmp/pl-button`.
 
+## Подключение
+
+```js
+import '@plcmp/pl-button';
 ```
 
-## Examples
+Для размеров, цветов и типографики подключи переменные темы.
 
-### Variants
+## Варианты
 
-Use the `variant` property to set the button's variant.
-
-<pl-flex-layout>
-    <pl-button variant="primary" label="Primary"></pl-button>
-    <pl-button variant="secondary" label="Secondary"></pl-button>
-    <pl-button variant="ghost" label="Ghost"></pl-button>
-    <pl-button variant="link" label="Link"></pl-button>
-</pl-flex-layout>
+<div class="demo">
+  <pl-flex-layout wrap>
+    <pl-button variant="primary" label="Сохранить"></pl-button>
+    <pl-button variant="secondary" label="Отмена"></pl-button>
+    <pl-button variant="ghost" label="Подробнее"></pl-button>
+    <pl-button variant="link" label="Открыть"></pl-button>
+  </pl-flex-layout>
+</div>
+<p class="demo-status" role="status">Загружаем примеры…</p>
 
 ```html
-<pl-button variant="primary" label="Primary"></pl-button>
-<pl-button variant="secondary" label="Secondary"></pl-button>
-<pl-button variant="ghost" label="Ghost"></pl-button>
-<pl-button variant="link" label="Link"></pl-button>
+<pl-button variant="primary" label="Сохранить"></pl-button>
+<pl-button variant="secondary" label="Отмена"></pl-button>
+<pl-button variant="ghost" label="Подробнее"></pl-button>
+<pl-button variant="link" label="Открыть"></pl-button>
 ```
 
-Use the `negative` attribute to set the button's negative variant.
+`variant="link"` меняет оформление. Компонент остаётся кнопкой и сам не выполняет переход по URL.
 
-<pl-flex-layout>
-    <pl-button negative variant="primary" label="Primary"></pl-button>
-    <pl-button negative variant="secondary" label="Secondary"></pl-button>
-    <pl-button negative variant="ghost" label="Ghost"></pl-button>
-    <pl-button negative variant="link" label="Link"></pl-button>
-</pl-flex-layout>
+## Негативное действие
+
+<div class="demo"><pl-button negative variant="primary" label="Удалить"></pl-button></div>
 
 ```html
-<pl-button negative variant="primary" label="Primary"></pl-button>
-<pl-button negative variant="secondary" label="Secondary"></pl-button>
-<pl-button negative variant="ghost" label="Ghost"></pl-button>
-<pl-button negative variant="link" label="Link"></pl-button>
+<pl-button negative variant="primary" label="Удалить"></pl-button>
 ```
 
-### Prefix and suffix slots
+`negative` переключает палитру на `--pl-negative-*`. Это оформление не добавляет подтверждение и не выполняет удаление само по себе.
 
-Use the `prefix` and `suffix` slots to add icons.
+## Значок в слоте
 
-<pl-flex-layout>
-    <pl-button  variant="primary" label="Settings">
-        <pl-icon slot="prefix" variant="primary" iconset="pl-default" size="16" icon="settings"></pl-icon>
-    </pl-button>
-    <pl-button variant="secondary" label="Print">
-        <pl-icon slot="suffix" variant="primary" iconset="pl-default" size="16" icon="print"></pl-icon>
-    </pl-button>
-    <pl-button variant="ghost" label="Download">
-        <pl-icon slot="suffix" variant="primary" iconset="pl-default" size="16" icon="download"></pl-icon>
-        <pl-icon slot="prefix" variant="primary" iconset="pl-default" size="16" icon="report"></pl-icon>
-    </pl-button>
-    <pl-button variant="link" label="Send">
-        <pl-icon slot="suffix" variant="primary" iconset="pl-default" size="16" icon="send"></pl-icon>
-    </pl-button>
-</pl-flex-layout>
+<div class="demo">
+  <pl-button label="Настройки">
+    <pl-icon slot="prefix" iconset="demo" icon="settings" size="16"></pl-icon>
+  </pl-button>
+</div>
 
 ```html
-<pl-button  variant="primary" label="Settings">
-    <pl-icon slot="prefix" variant="primary" iconset="pl-default" size="16" icon="settings"></pl-icon>
-</pl-button>
-<pl-button variant="secondary" label="Print">
-    <pl-icon slot="suffix" variant="primary" iconset="pl-default" size="16" icon="print"></pl-icon>
-</pl-button>
-<pl-button variant="ghost" label="Download">
-    <pl-icon slot="suffix" variant="primary" iconset="pl-default" size="16" icon="download"></pl-icon>
-    <pl-icon slot="prefix" variant="primary" iconset="pl-default" size="16" icon="report"></pl-icon>
-</pl-button>
-<pl-button variant="link" label="Send">
-    <pl-icon slot="suffix" variant="primary" iconset="pl-default" size="16" icon="send"></pl-icon>
+<pl-button label="Настройки">
+  <pl-icon slot="prefix" iconset="demo" icon="settings" size="16"></pl-icon>
 </pl-button>
 ```
 
-### Loading
+Компонент `pl-icon` и выбранный набор значков должны быть загружены заранее. В документации это делает модуль демо.
 
-Use the `loading` attribute to make a button busy. Clicks will be suppressed until the loading state is removed.
+## Загрузка и отключение
+
+<div class="demo">
+  <pl-flex-layout wrap>
+    <pl-button loading label="Сохраняем…" variant="primary"></pl-button>
+    <pl-button disabled label="Недоступно"></pl-button>
+  </pl-flex-layout>
+</div>
 
 ```html
-<pl-button loading variant="primary" label="Loading..."></pl-button>
-<pl-button loading variant="secondary" label="Loading..."></pl-button>
-<pl-button loading variant="ghost" label="Loading..."></pl-button>
-<pl-button loading variant="link" label="Loading..."></pl-button>
+<pl-button loading label="Сохраняем…" variant="primary"></pl-button>
+<pl-button disabled label="Недоступно"></pl-button>
 ```
 
-<pl-flex-layout>
-    <pl-button loading variant="primary" label="Loading..."></pl-button>
-    <pl-button loading variant="secondary" label="Loading..."></pl-button>
-    <pl-button loading variant="ghost" label="Loading..."></pl-button>
-    <pl-button loading variant="link" label="Loading..."></pl-button>
-</pl-flex-layout>
+`loading` обозначает занятость и подавляет распространение клика. Он не рисует индикатор загрузки автоматически. Меняй подпись или содержимое слота, если нужно явно показать выполнение.
 
-### Disabled
+## Обработчик
 
-Use the `disabled` attribute to disable a button. Clicks will be suppressed until the disabled state is removed.
+Фрагмент шаблона `PlElement` или `PlForm`:
 
-<pl-flex-layout>
-    <pl-button disabled variant="primary" label="Primary"></pl-button>
-    <pl-button disabled variant="secondary" label="Secondary"></pl-button>
-    <pl-button disabled variant="ghost" label="Ghost"></pl-button>
-    <pl-button disabled variant="link" label="Link" ></pl-button>
-</pl-flex-layout>
-
-```html 
-<pl-button disabled variant="primary" label="primary"></pl-button>
-<pl-button disabled variant="secondary" label="secondary"></pl-button>
-<pl-button disabled variant="ghost" label="ghost"></pl-button>
-<pl-button disabled variant="link" label="link" ></pl-button>
+```html
+<pl-button label="Сохранить" on-click="[[save]]" disabled="[[invalid]]"></pl-button>
 ```
 
-## Properties
+`save` — метод экземпляра. Работающий пример с обработчиком и изменением состояния есть на странице [pl-checkbox](/components/pl-checkbox?id=Двусторонняя-привязка).
 
-| Name  | Description  | ReflectsToAttribute | Type | Default
-|---|---|:----:|---|---|
-| `label` | The button's label  | - | string |  (empty) 
-| `variant` | The button's variant | + | `primary \| secondary \| ghost \| link` | `secondary`
-| `disabled` | The button's disabled state  |  + | `boolean` | `false`
-| `hidden` | The button's hidden state  |  + | `boolean` | `false`
-| `negative` | The button's negative state  |  + | `boolean` | `false`
-| `loading` | The button's loading state  |  + | `boolean` | `false`
+## Свойства и слоты
 
+| Свойство | Тип | По умолчанию | Описание |
+| --- | --- | --- | --- |
+| `label` | `String` | `undefined` | Текст кнопки |
+| `variant` | `String` | `secondary` | Вариант оформления: `primary`, `secondary`, `ghost` или `link` |
+| `disabled` | `Boolean` | `undefined` | Отключённое состояние |
+| `hidden` | `Boolean` | `undefined` | Скрывает кнопку |
+| `negative` | `Boolean` | `undefined` | Негативная палитра |
+| `loading` | `Boolean` | `undefined` | Состояние выполнения |
 
-## Slots
+| Слот | Назначение |
+| --- | --- |
+| По умолчанию | Содержимое кнопки; обычно используется вместо `label` |
+| `prefix` | Содержимое перед текстом |
+| `suffix` | Содержимое после текста |
 
-| Name  | Description  
-|---|---
-| (default) | The button's label 
-| `prefix` | The button's prefix slot, icons placed before label
-| `suffix` | The button's suffix slot, icons placed after label
+Событие действия — обычный `click`.
+
+<footer class="docs-sources">
+  <span>Исходники:</span>
+  <a href="https://cdn.jsdelivr.net/npm/@plcmp/pl-button/pl-button.js" target="_blank" rel="noopener">pl-button.js</a>
+</footer>

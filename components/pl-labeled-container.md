@@ -1,114 +1,74 @@
-# Pl-Labeled-container
-Контейнер с подписью позволяет комбинировать другой компонент с подписью в общий элемент
+# pl-labeled-container
 
-<pl-labeled-container label="Текст подписи"></pl-labeled-container>
+Объединяет подпись и произвольное содержимое. Используется внутри полей ввода и подходит для собственного контрола с общей системой размеров.
 
-## Examples
+Пакет: `@plcmp/pl-labeled-container`.
 
-### Orientation
-Используйте `orientation` для изменения расположения текста
-<pl-labeled-container label="horizontal orientation" orientation="horizontal" label-width="130">
-    <button>Button</button>
+## Подключение
+
+```js
+import '@plcmp/pl-labeled-container';
+```
+
+Контейнер использует переменные темы для ширины, промежутков и подписи.
+
+## Расположение подписи
+
+<div class="demo demo-stack">
+  <pl-labeled-container label="Подпись сверху">
+    <pl-button label="Действие"></pl-button>
+  </pl-labeled-container>
+  <pl-labeled-container label="Подпись слева" orientation="horizontal" label-width="120" content-width="140">
+    <pl-button label="Действие"></pl-button>
+  </pl-labeled-container>
+</div>
+<p class="demo-status" role="status">Загружаем примеры…</p>
+
+```html
+<pl-labeled-container label="Подпись сверху">
+  <pl-button label="Действие"></pl-button>
 </pl-labeled-container>
-<br>
-<pl-labeled-container label="vertical orientation">
-    <button>Button</button>
+<pl-labeled-container label="Подпись слева" orientation="horizontal" label-width="120" content-width="140">
+  <pl-button label="Действие"></pl-button>
 </pl-labeled-container>
+```
 
-<details>
-    <summary>html</summary>
+## Ширина и слоты
 
-    <pl-labeled-container label="horizontal orientation" orientation="horizontal" label-width="130">
-        <button>Button</button>
-    </pl-labeled-container>
+`label-width` и `content-width` принимают ширины в px. В горизонтальном варианте контейнер складывает ширину подписи и содержимого. Учитывай это на узком экране.
 
-    <pl-labeled-container label="vertical orientation">
-        <button>Button</button>
-    </pl-labeled-container>
-</details>
+<div class="demo">
+  <pl-labeled-container label="Настройки" content-width="200">
+    <pl-icon slot="label-prefix" iconset="demo" icon="settings"></pl-icon>
+    <pl-button label="Открыть настройки"></pl-button>
+  </pl-labeled-container>
+</div>
 
-### ContentWidth
-Используйте `сontentWidth`для того что бы указать ширину контейнера
-
-<pl-labeled-container label="content-width=100" orientation="horizontal" label-width="120" content-width="100">
-    <button style="width: 100%">Button</button>
+```html
+<pl-labeled-container label="Настройки" content-width="200">
+  <pl-icon slot="label-prefix" iconset="demo" icon="settings"></pl-icon>
+  <pl-button label="Открыть настройки"></pl-button>
 </pl-labeled-container>
-<br>
-<pl-labeled-container label="content-width=200" orientation="horizontal" label-width="120" content-width="200">
-    <button style="width: 100%">Button</button>
-</pl-labeled-container>
+```
 
-<details>
-    <summary>html</summary>
+## Свойства и слоты
 
-    <pl-labeled-container label="content-width=100" orientation="horizontal" label-width="120" content-width="100">
-        <button style="width: 100%">Button</button>
-    </pl-labeled-container>
+| Свойство | Тип | По умолчанию | Описание |
+| --- | --- | --- | --- |
+| `label` | `String` | `undefined` | Текст подписи |
+| `orientation` | `String` | `vertical` | Подпись сверху или слева (`horizontal`) |
+| `labelWidth` | `Number` | `undefined` | Ширина подписи; исходная тема задаёт `240px` |
+| `contentWidth` | `Number` | `undefined` | Ширина содержимого; исходная тема задаёт `240px` |
 
-    <pl-labeled-container label="content-width=200" orientation="horizontal" label-width="120" content-width="200">
-        <button style="width: 100%">Button</button>
-    </pl-labeled-container>
-</details>
+| Слот | Назначение |
+| --- | --- |
+| По умолчанию | Дочерний контрол или другое содержимое |
+| `label-prefix` | Содержимое перед подписью |
+| `label-suffix` | Содержимое после подписи |
 
-### labelWidth
-Используйте `labelWidth`для того что бы указать ширину подписи
+Контейнер не хранит редактируемое значение и не валидирует дочерний контрол. Эти обязанности остаются у самого поля.
 
-<pl-labeled-container label="labelWidth=100" orientation="horizontal" label-width="120">
-    <button>Button</button>
-</pl-labeled-container>
-<br>
-<pl-labeled-container label="labelWidth=80" orientation="horizontal" label-width="90">
-    <button>Button</button>
-</pl-labeled-container>
-
-<details>
-    <summary>html</summary>
-
-    <pl-labeled-container label="labelWidth=100" orientation="horizontal" label-width="120">
-        <button>Button</button>
-    </pl-labeled-container>
-
-    <pl-labeled-container label="labelWidth=80" orientation="horizontal" label-width="90">
-        <button>Button</button>
-    </pl-labeled-container>
-</details>
-
-### Slots
-Используйте `label-prefix` или `label-suffix` для того что бы добавить иконку к подписи
-<pl-labeled-container label="label-prefix" orientation="horizontal">
-    <pl-icon slot="label-prefix" variant="primary" iconset="pl-default" size="16" icon="settings"></pl-icon>
-</pl-labeled-container>
-<br>
-<pl-labeled-container label="label-suffix" label-width="80" orientation="horizontal">
-    <pl-icon slot="label-suffix" variant="primary" iconset="pl-default" size="16" icon="settings"></pl-icon>
-</pl-labeled-container>
-
-<details>
-    <summary>html</summary>
-
-    <pl-labeled-container label="label-prefix" orientation="horizontal">
-        <pl-icon slot="label-prefix" variant="primary" iconset="pl-default" size="16" icon="settings"></pl-icon>
-    </pl-labeled-container>
-
-    <pl-labeled-container label="label-suffix" label-width="80" orientation="horizontal">
-        <pl-icon slot="label-suffix" variant="primary" iconset="pl-default" size="16" icon="settings"></pl-icon>
-    </pl-labeled-container>
-</details>
-
-## Properties
-
-| Name  | Description  | ReflectsToAttribute | Type | Default
-|---|---|:----:|---|:---:|
-| `label` | Метка  | - | string |  (empty) 
-| `orientation` | Расположение подписи относительно текстового поля | - | `horizontal \| vertical` | `vertical`
-| `contentWidth` | Значение ширины поля ввода<br> *По умолчанию задается ширина в 240px*  |  + | `number` | (empty)
-| `labelWidth` | Значение ширны метки поля<br> *По умолчанию задается ширина в 240px*  |  + | `number` | (empty)
-
-
-## Slots
-
-| Name  | Description  
-|---|---
-| (default) | Слот для дочернего компонента контейнера
-| `label-prefix` | Слот для префикса метки, значки располагаются перед меткой
-| `label-suffix` | Слот для суфикс метки, значки располагаются после меткой
+<footer class="docs-sources">
+  <span>Исходники:</span>
+  <a href="https://cdn.jsdelivr.net/npm/@plcmp/pl-labeled-container/pl-labeled-container.js" target="_blank" rel="noopener">pl-labeled-container.js</a>
+</footer>
