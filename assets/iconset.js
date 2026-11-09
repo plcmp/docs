@@ -1,4 +1,5 @@
 import '@plcmp/pl-iconset';
+import '@plcmp/pl-iconset-default';
 
 const iconset = document.createElement('pl-iconset');
 iconset.iconset = 'demo';
@@ -21,6 +22,14 @@ iconset.innerHTML = `
     </g>
     <g id="check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
       <path d="m3 8 3.25 3.25L13 4.5"></path>
+    </g>
+    <g id="person" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="8" cy="5" r="2.5"></circle>
+      <path d="M3 14c.5-2.4 2.2-3.8 5-3.8s4.5 1.4 5 3.8"></path>
+    </g>
+    <g id="mail" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="3.5" width="12" height="9" rx="1"></rect>
+      <path d="m2.5 4.5 5.5 4.25 5.5-4.25"></path>
     </g>
   </svg>
 `;

@@ -1,6 +1,6 @@
 /** Регистрирует опубликованные компоненты один раз, независимо от переходов Docsify. */
 async function loadDemos() {
-  await import('./iconset.js');
+  await import('./iconset.js?v=235bb60dc6');
   await Promise.all([
     import('@plcmp/pl-button'),
     import('@plcmp/pl-input'),
@@ -12,11 +12,23 @@ async function loadDemos() {
     import('../demos/bindings.js'),
     import('../demos/object-bindings.js'),
     import('../demos/templates.js'),
-    import('../demos/data-observer.js'),
+    import('../demos/data-observer.js?v=8fb16fd41c'),
     import('../demos/company-data.js'),
     import('../demos/company-access.js'),
     import('../demos/company-editor.js'),
-    import('../demos/company-cards.js')
+    import('../demos/company-cards.js'),
+    import('../demos/combobox.js'),
+    import('../demos/combobox-tree.js'),
+    import('../demos/combobox-list.js'),
+    import('../demos/datetime.js'),
+    import('../demos/calendar.js'),
+    import('../demos/time-picker.js'),
+    import('../demos/radio.js'),
+    import('../demos/tabs.js'),
+    import('../demos/overlays.js'),
+    import('../demos/icons.js'),
+    import('../demos/virtual-scroll.js'),
+    import('../demos/table-cases.js')
   ]);
 }
 

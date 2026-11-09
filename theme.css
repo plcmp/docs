@@ -54,10 +54,10 @@ body:has(.app-nav) .markdown-section { margin-top: 0; }
 .markdown-section td, .markdown-section th { box-sizing: border-box; vertical-align: top; border: 1px solid #e1e8e6; padding: 10px 13px; }
 .markdown-section tr:nth-child(2n) { background: #fcfdfd; }
 .markdown-section table code { white-space: nowrap; overflow-wrap: normal; word-break: normal; }
-.markdown-section .docs-properties-table { min-width: 720px; table-layout: fixed; }
-.markdown-section .docs-properties-table th:nth-child(1) { width: 156px; }
-.markdown-section .docs-properties-table th:nth-child(2) { width: 96px; }
-.markdown-section .docs-properties-table th:nth-child(3) { width: 144px; }
+.markdown-section .docs-properties-table { min-width: 824px; table-layout: fixed; }
+.markdown-section .docs-properties-table th:nth-child(1) { width: 200px; }
+.markdown-section .docs-properties-table th:nth-child(2) { width: 120px; }
+.markdown-section .docs-properties-table th:nth-child(3) { width: 176px; }
 .markdown-section .docs-properties-table tr > :nth-child(-n+3) { white-space: nowrap; }
 .markdown-section pre { border: 1px solid #e4eae8; border-radius: 6px; background: #f7f9f8; padding: 18px; line-height: 1.65; }
 .markdown-section pre > code { padding: 0; font-size: 12.5px; }
@@ -73,7 +73,7 @@ body:has(.app-nav) .markdown-section { margin-top: 0; }
 .sidebar .search { margin: 0 20px 16px; }
 .search input { min-height: 38px; font-size: 13px; background: #fff; }
 .search .matching-post { line-height: 1.5; }
-.docsify-copy-code-button { font-size: 11px !important; border-radius: 3px; }
+.markdown-section .docsify-copy-code-button { color: #fff; font-size: 11px !important; border-radius: 3px; }
 .docsify-pagination-container { margin-top: 44px !important; }
 .docs-sources { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-top: 40px; color: #697a7e; font-size: 13px; }
 .docs-sources a { color: #526d70; }

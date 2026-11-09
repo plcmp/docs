@@ -21,7 +21,7 @@ import '@plcmp/pl-flex-layout';
 </div>
 <p class="demo-status" role="status">Загружаем примеры…</p>
 
-[Полный код работающего примера](../demos/flex-layout.js ':include :type=code javascript')
+[Код примера](../demos/flex-layout.js ':include :type=code javascript')
 
 ## Перенос и выравнивание
 
@@ -67,26 +67,51 @@ import '@plcmp/pl-flex-layout';
 
 | Свойство | Тип | По умолчанию | Описание |
 | --- | --- | --- | --- |
-| `vertical` | `Boolean` | `undefined` | Располагает дочерние элементы в столбец; без него — в строку |
-| `wrap` | `Boolean` | `undefined` | Разрешает перенос дочерних элементов на следующую строку или в следующий столбец |
-| `stretch` | `Boolean` | `undefined` | Ширина 100% |
-| `fit` | `Boolean` | `undefined` | Ширина и высота 100% |
-| `scrollable` | `Boolean` | `undefined` | Включает прокрутку при переполнении контейнера: `overflow: auto` |
-| `align` | `String` | `flex-start` | Выравнивание по поперечной оси: `flex-start`, `center`, `flex-end` или `baseline` |
-| `justify` | `String` | `flex-start` | Выравнивание по основной оси: `flex-start`, `center`, `flex-end` или `space-between` |
-| `gap` | `Number` | `undefined` | Промежуток в px; без значения — `--pl-space-md` |
-| `labelWidth` | `Number` | `undefined` | `label-width`: задаёт `--pl-label-width` и горизонтальную ориентацию подходящих потомков |
-| `hidden` | `Boolean` | `undefined` | Скрывает контейнер |
+| `vertical` | `Boolean` | `undefined` | Располагает дочерние элементы в столбец; без него — в строку. |
+| `wrap` | `Boolean` | `undefined` | Разрешает перенос дочерних элементов на следующую строку или в следующий столбец. |
+| `stretch` | `Boolean` | `undefined` | Ширина 100%. |
+| `fit` | `Boolean` | `undefined` | Ширина и высота 100%. |
+| `scrollable` | `Boolean` | `undefined` | Включает прокрутку при переполнении контейнера: `overflow: auto`. |
+| `align` | `String` | `'flex-start'` | Выравнивание по поперечной оси: `flex-start`, `center`, `flex-end` или `baseline`. |
+| `justify` | `String` | `'flex-start'` | Выравнивание по основной оси: `flex-start`, `center`, `flex-end` или `space-between`. |
+| `gap` | `Number` | `undefined` | Промежуток в px; без значения — `--pl-space-md`. |
+| `labelWidth` | `Number` | `undefined` | `label-width`: задаёт `--pl-label-width` и горизонтальную ориентацию подходящих потомков. |
+| `hidden` | `Boolean` | `undefined` | Скрывает контейнер. |
 
 ## Слот и ограничения
 
 Слот по умолчанию принимает дочерние элементы. Контейнер не меняет их бизнес-состояние и не генерирует специальных событий.
 
-Обработчик `gap` применяет только truthy-значение: числовой `0` через биндинг не сбросит ранее заданный промежуток. Для нулевого отступа используй явное CSS-правило `gap: 0` на контейнере.
+Обработчик `gap` применяет только значение, которое JavaScript преобразует в `true`: числовой `0` через биндинг не сбросит ранее заданный промежуток. Для нулевого отступа используй явное CSS-правило `gap: 0` на контейнере.
 
 `labelWidth` обходит существующих потомков при изменении свойства. Для динамически создаваемого поля явно укажи `orientation`, если нужна горизонтальная подпись.
 
 Связанная тема: [стили и Shadow DOM](/guide/styles).
+
+## Стилизация
+
+Раскладка находится на самом хосте. Направление, перенос и выравнивание задавай через `vertical`, `wrap`, `align` и `justify`. В CSS владельца можно ограничить размеры контейнера и распределить пространство между его непосредственными детьми:
+
+```css
+pl-flex-layout.toolbar {
+  width: 100%;
+  min-width: 0;
+  gap: var(--pl-space-sm);
+}
+
+.toolbar > pl-input {
+  flex: 1 1 240px;
+  min-width: 0;
+}
+
+.toolbar > pl-button {
+  flex: 0 0 auto;
+}
+```
+
+Класс `toolbar` назначь самому `pl-flex-layout`; полю добавь `stretch`. Если `gap` задан атрибутом или биндингом, компонент записывает промежуток в inline-стиль. Для управления промежутком только из CSS оставь свойство `gap` незаданным. Частей `part` у контейнера нет.
+
+Подробнее: [стили и Shadow DOM](/guide/styles).
 
 <footer class="docs-sources">
   <span>Исходники:</span>

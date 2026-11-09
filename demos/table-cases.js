@@ -1,0 +1,25 @@
+/** Регистрирует короткие интерактивные примеры таблицы. */
+import './table/selection.js';
+import './table/basic.js';
+import './table/multi-select.js';
+import './table/sorting.js';
+import './table/filtering.js';
+import './table/filtering-toolbar.js';
+import './table/formatting.js';
+import './table/cell-templates.js';
+import './table/styling.js';
+import './table/editing.js';
+import './table/tree.js';
+import './table/tooltips.js';
+import './table/fixed-columns.js';
+import './table/resizing.js';
+import './table/column-visibility.js';
+import './table/loading.js';
+import './table/variable-height.js';
+import './table/custom-row.js';
+import './table/header.js';
+import './table/alignment.js';
+import './table/footer.js';
+import './table/slots.js';
+import './table/growing.js';
+import './table/fixed-height.js';

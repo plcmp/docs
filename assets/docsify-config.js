@@ -1,12 +1,31 @@
-function redirectRemovedCatalog() {
-  const path = window.location.hash.slice(1).split('?')[0];
+function redirectDocsRoutes() {
+  // Старые ссылки открывают тот же материал по новому адресу, включая якорь заголовка.
+  let target = window.location.hash.replace(/^#\/integration(?=\/|\?|$)/, '#/nfjs');
+  const path = target.slice(1).split('?')[0];
+  if (/^\/nfjs\/?$/.test(path)) {
+    target = target.replace(/^#\/nfjs\/?(?=\?|$)/, '#/nfjs/forms');
+  }
   if (/^\/components(?:\/(?:README(?:\.md)?)?)?\/?$/i.test(path)) {
-    window.location.replace('#/components/pl-button');
+    target = '#/components/pl-button';
+  }
+  const componentSections = {
+    '/components/table/pl-table-column': '/components/pl-table?id=pl-table-column',
+    '/components/pl-combobox-list': '/components/pl-combobox?id=pl-combobox-list',
+    '/components/pl-radio': '/components/pl-radio-group?id=pl-radio',
+    '/components/pl-radio-button': '/components/pl-radio-group?id=pl-radio-button',
+    '/components/pl-tab': '/components/pl-tabpanel?id=pl-tab',
+    '/components/pl-tooltip-target': '/components/pl-tooltip?id=pl-tooltip-target',
+    '/components/pl-datetime-month-selector': '/components/pl-calendar?id=pl-datetime-month-selector',
+    '/components/pl-datetime-year-selector': '/components/pl-calendar?id=pl-datetime-year-selector'
+  };
+  if (componentSections[path]) target = `#${componentSections[path]}`;
+  if (target !== window.location.hash) {
+    window.location.replace(target);
   }
 }
 
-redirectRemovedCatalog();
-window.addEventListener('hashchange', redirectRemovedCatalog);
+redirectDocsRoutes();
+window.addEventListener('hashchange', redirectDocsRoutes);
 
 window.$docsify = {
   name: 'Polylib',
@@ -22,7 +41,7 @@ window.$docsify = {
   collapsibleSidebarGroups: true,
   collapseSidebarGroups: false,
   alias: {
-    '/integration/(?:.*/)?_sidebar.md': '/integration/_sidebar.md',
+    '/nfjs/(?:.*/)?_sidebar.md': '/nfjs/_sidebar.md',
     '/components/(?:.*/)?_sidebar.md': '/components/_sidebar.md',
     '/.*/_sidebar.md': '/_sidebar.md',
     '/.*/_navbar.md': '/_navbar.md'
@@ -39,17 +58,58 @@ window.$docsify = {
       '/guide/reactivity', '/guide/bindings', '/guide/object-bindings',
       '/guide/templates', '/guide/events', '/guide/lifecycle', '/guide/edge-cases',
       '/guide/styles', '/guide/style-guide',
-      '/integration/forms', '/integration/subforms', '/integration/access',
-      '/integration/validation', '/integration/data', '/integration/rest',
-      '/integration/server-endpoints', '/integration/actions', '/integration/datasets',
-      '/integration/change-tracking', '/integration/partial-save', '/integration/nested-changes',
-      '/components/pl-button', '/components/pl-icon-button', '/components/pl-input',
-      '/components/pl-checkbox', '/components/pl-textarea', '/components/pl-flex-layout',
-      '/components/pl-labeled-container', '/components/pl-data-observer'
+      '/nfjs/forms', '/nfjs/subforms', '/nfjs/access',
+      '/nfjs/validation', '/nfjs/data', '/nfjs/rest',
+      '/nfjs/server-endpoints', '/nfjs/actions', '/nfjs/datasets',
+      '/nfjs/change-tracking', '/nfjs/partial-save', '/nfjs/nested-changes',
+      '/components/pl-button',
+      '/components/pl-icon-button',
+      '/components/pl-input',
+      '/components/pl-textarea',
+      '/components/pl-checkbox',
+      '/components/pl-combobox',
+      '/components/pl-radio-group',
+      '/components/pl-datetime',
+      '/components/pl-calendar',
+      '/components/pl-time-picker',
+      '/components/pl-dropdown',
+      '/components/pl-popover',
+      '/components/pl-tooltip',
+      '/components/pl-icon',
+      '/components/pl-iconset',
+      '/components/pl-flex-layout',
+      '/components/pl-labeled-container',
+      '/components/pl-tabpanel',
+      '/components/pl-data-observer',
+      '/components/pl-virtual-scroll',
+      '/components/pl-table',
+      '/components/table/selection',
+      '/components/table/multi-select',
+      '/components/table/sorting',
+      '/components/table/filtering',
+      '/components/table/filtering-toolbar',
+      '/components/table/formatting',
+      '/components/table/cell-templates',
+      '/components/table/styling',
+      '/components/table/editing',
+      '/components/table/tree',
+      '/components/table/tooltips',
+      '/components/table/fixed-columns',
+      '/components/table/resizing',
+      '/components/table/column-visibility',
+      '/components/table/header',
+      '/components/table/alignment',
+      '/components/table/footer',
+      '/components/table/slots',
+      '/components/table/growing',
+      '/components/table/fixed-height',
+      '/components/table/loading',
+      '/components/table/variable-height',
+      '/components/table/custom-row'
     ],
     depth: 3,
     maxAge: 86400000,
-    namespace: `polylib-docs-${window.location.pathname}-sections`,
+    namespace: `polylib-docs-${window.location.pathname}-a6844a10c3`,
     insertAfter: '.app-name',
     placeholder: 'Поиск по документации',
     noData: 'Ничего не найдено',
@@ -70,7 +130,28 @@ window.$docsify = {
   plugins: [function docsPage(hook, vm) {
     let previousPath;
     let previousSection;
+    const nestedGroupStates = new Map();
+    hook.beforeEach(function (markdown) {
+      document.querySelectorAll('.sidebar-nav li.group li.group').forEach((group) => {
+        const key = group.querySelector('ul a')?.hash;
+        if (key) nestedGroupStates.set(key, group.classList.contains('collapse'));
+      });
+      return markdown;
+    });
+    const currentSection = () => vm.route.path.startsWith('/nfjs/') ? '/nfjs/'
+      : vm.route.path.startsWith('/components/') ? '/components/' : '/guide/';
+    function markCurrentSection() {
+      document.querySelectorAll('.app-nav a').forEach((link) => {
+        const selected = link.hash.slice(1).startsWith(currentSection());
+        link.closest('li')?.classList.toggle('active', selected);
+        if (selected) link.setAttribute('aria-current', 'true');
+        else link.removeAttribute('aria-current');
+      });
+    }
     hook.mounted(function () {
+      const navbar = document.querySelector('.app-nav');
+      // Navbar может загрузиться позже страницы, поэтому отмечаем раздел и после её отрисовки.
+      if (navbar) new MutationObserver(markCurrentSection).observe(navbar, { childList: true, subtree: true });
       const status = document.querySelector('.search .results-status');
       if (status) {
         new MutationObserver(() => {
@@ -96,8 +177,18 @@ window.$docsify = {
         clearSearch.title = 'Очистить поиск';
         clearSearch.setAttribute('aria-label', 'Очистить поиск');
       }
-      const section = vm.route.path.startsWith('/integration/') ? '/integration/'
-        : vm.route.path.startsWith('/components/') ? '/components/' : '/guide/';
+      const section = currentSection();
+      // Docsify добавляет переключатели только верхним группам; вложенные используют те же обработчики.
+      document.querySelectorAll('.sidebar-nav li.group li.group').forEach((group) => {
+        const title = group.querySelector(':scope > p');
+        if (!title) return;
+        const collapsed = nestedGroupStates.get(group.querySelector('ul a')?.hash) ?? false;
+        group.classList.toggle('collapse', collapsed);
+        title.classList.add('group-title', 'group-toggle');
+        title.setAttribute('role', 'button');
+        title.setAttribute('tabindex', '0');
+        title.setAttribute('aria-expanded', String(!collapsed));
+      });
       if (previousSection !== section) {
         if (previousSection) clearSearch?.click();
         document.querySelectorAll('.sidebar-nav > ul > li.group').forEach((group) => {
@@ -113,18 +204,16 @@ window.$docsify = {
           document.querySelector('.sidebar-toggle-button')?.click();
         }
         const activeLink = document.querySelector('.sidebar-nav li[aria-current="page"] > a');
-        const group = activeLink?.closest('.sidebar-nav > ul > li.group')
-          || (vm.route.path === '/' && document.querySelector('.sidebar-nav > ul > li.group'));
-        group?.classList.remove('collapse');
-        group?.querySelector(':scope > .group-toggle')?.setAttribute('aria-expanded', 'true');
+        let group = activeLink?.closest('li.group')
+          || (vm.route.path === '/' ? document.querySelector('.sidebar-nav > ul > li.group') : null);
+        while (group) {
+          group.classList.remove('collapse');
+          group.querySelector(':scope > .group-toggle')?.setAttribute('aria-expanded', 'true');
+          group = group.parentElement?.closest('li.group');
+        }
         previousPath = vm.route.path;
       }
-      document.querySelectorAll('.app-nav a').forEach((link) => {
-        const selected = link.hash.slice(1).startsWith(section);
-        link.closest('li')?.classList.toggle('active', selected);
-        if (selected) link.setAttribute('aria-current', 'true');
-        else link.removeAttribute('aria-current');
-      });
+      markCurrentSection();
       const main = document.querySelector('#main');
       if (main) main.tabIndex = -1;
       document.querySelectorAll('.markdown-section table').forEach((table) => {
